@@ -1,0 +1,565 @@
+{
+    "title": "Questionnaire 3",
+    "questionnaire": [
+        {
+            "index": 0,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Are you currently under medications?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 1,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Have you been taking steroids recently?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have high blood pressure?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 3,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have skin problems (ie. infection, psoriasis, eczema, allergies)?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you suffer from some illness?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 5,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have skin or other malignancies?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have static leticose veins?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 7,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have any non-healed wound or ulcer?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Are you pregnant of trying to fall pregnant?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 9,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Are you breastfeeding?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 10,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have urinary tract infection?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 11,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have urinary incontinence?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 12,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have bowel incontinence?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 13,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you suffer from epilepsy?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 14,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have absence of cough reflex?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 15,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have impaired skin sensation?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 16,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have perforated ear drums?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 17,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have osteoporosis?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 18,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you suffer from multiple scelorosis?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 19,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Have you recently lost weight?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 20,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have night pain?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 21,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have cold limbs?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 22,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you general feel very tired?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 23,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you wake up at night?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 24,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you wake up feeling tired?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 25,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you experience hot flushes?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 26,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you usually experience dizziness?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 27,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have spontaneous day sweating?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 28,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have night spontaneous sweating?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 29,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you suffer from panic attacks?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 30,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you have claustrophobia?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 31,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you suffer from alcohol or other drug addiction?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 32,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Have you ever been prescribed with psychiatric drugs?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 33,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do have any psychiatric condition?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 34,
+            "optionType": 1,
+            "subOptionType": 0,
+            "question": "Do you cry easily?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        }
+    ]
+}

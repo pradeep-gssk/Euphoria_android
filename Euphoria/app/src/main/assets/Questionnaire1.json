@@ -1,0 +1,345 @@
+{
+    "title": "Questionnaire 1",
+    "questionnaire": [
+        {
+            "index": 0,
+            "optionType": 1,
+            "element": "Fire",
+            "subOptionType": 0,
+            "question": "Do you feel restlessness?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 1,
+            "optionType": 1,
+            "element": "Fire",
+            "subOptionType": 0,
+            "question": "Do you wake up at night?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "optionType": 1,
+            "element": "Fire",
+            "subOptionType": 0,
+            "question": "Do you have mood swings?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 3,
+            "optionType": 1,
+            "element": "Fire",
+            "subOptionType": 0,
+            "question": "Do you have heart palpitations?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "optionType": 1,
+            "element": "Earth",
+            "subOptionType": 0,
+            "question": "Do you feel heavy headed?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 5,
+            "optionType": 1,
+            "element": "Earth",
+            "subOptionType": 0,
+            "question": "Do you have lack of energy?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "optionType": 1,
+            "element": "Earth",
+            "subOptionType": 0,
+            "question": "Do you have abdominal distention?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 7,
+            "optionType": 1,
+            "element": "Earth",
+            "subOptionType": 0,
+            "question": "Do you get bruises easily?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "optionType": 1,
+            "element": "Metal",
+            "subOptionType": 0,
+            "question": "Do you have shortness of breath?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 9,
+            "optionType": 1,
+            "element": "Metal",
+            "subOptionType": 0,
+            "question": "Do you cough or have asthma?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 10,
+            "optionType": 1,
+            "element": "Metal",
+            "subOptionType": 0,
+            "question": "Do you have constipation?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 11,
+            "optionType": 1,
+            "element": "Metal",
+            "subOptionType": 0,
+            "question": "Do you have nasal symptoms?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 12,
+            "optionType": 1,
+            "element": "Water",
+            "subOptionType": 0,
+            "question": "Do you frequently feel fear?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 13,
+            "optionType": 1,
+            "element": "Water",
+            "subOptionType": 0,
+            "question": "Are you chronically tired?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 14,
+            "optionType": 1,
+            "element": "Water",
+            "subOptionType": 0,
+            "question": "Do you have osteopenia or osteoporosis?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 15,
+            "optionType": 1,
+            "element": "Water",
+            "subOptionType": 0,
+            "question": "Do you feel your knees and low back are weak?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 16,
+            "optionType": 1,
+            "element": "Wood",
+            "subOptionType": 0,
+            "question": "Do you feel anger easily?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 17,
+            "optionType": 1,
+            "element": "Wood",
+            "subOptionType": 0,
+            "question": "Do you have problems falling into sleep?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 18,
+            "optionType": 1,
+            "element": "Wood",
+            "subOptionType": 0,
+            "question": "Do you feel you are aggressive or passive aggressive?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 19,
+            "optionType": 1,
+            "element": "Wood",
+            "subOptionType": 0,
+            "question": "Do you feel your chest blocked and heavy?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        }
+    ]
+}

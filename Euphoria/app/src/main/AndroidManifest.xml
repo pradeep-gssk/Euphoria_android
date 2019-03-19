@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.example.euphoria">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+        <activity android:name=".Activities.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activities.HomeActivity">
+        </activity>
+        <activity android:name=".Activities.Questionnaires.QuestionnairesActivity">
+        </activity>
+        <activity android:name=".Activities.Questionnaires.QuestionnaireActivity">
+        </activity>
+        <activity android:name=".Activities.Diet.DietActivity">
+        </activity>
+        <activity android:name=".Activities.Diet.DietIndexActivity">
+        </activity>
+        <activity android:name=".Activities.Diet.DietViewActivity">
+        </activity>
+        <activity android:name=".Activities.Exercises.ExerciseActivity">
+        </activity>
+        <activity android:name=".Activities.Exercises.ExerciseIndexActivity">
+        </activity>
+        <activity android:name=".Activities.Exercises.ExerciseViewActivity">
+        </activity>
+        <activity android:name=".Activities.Gallery.GalleryActivity">
+        </activity>
+        <activity android:name=".Activities.Gallery.GalleryListActivity">
+        </activity>
+        <activity android:name=".Activities.Gallery.GalleryIndexActivity">
+        </activity>
+        <activity android:name=".Activities.Gallery.GalleryViewActivity">
+        </activity>
+        <activity android:name=".Activities.History.HistoryActivity">
+        </activity>
+        <activity android:name=".Activities.History.HistoryIndexActivity">
+        </activity>
+        <activity android:name=".Activities.History.HistoryPhotoActivity">
+        </activity>
+        <activity android:name=".Activities.History.HistoryPhotoViewActivity">
+        </activity>
+        <activity android:name=".Activities.Timer.SessionsActivity">
+        </activity>
+        <activity android:name=".Activities.Timer.TimerSetupActivity">
+        </activity>
+        <activity android:name=".Activities.Timer.AddSessionActivity">
+        </activity>
+        <activity android:name=".Activities.Timer.SoundsActivity">
+        </activity>
+    </application>
+</manifest>
