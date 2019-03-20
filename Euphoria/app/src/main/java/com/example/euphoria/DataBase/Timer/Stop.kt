@@ -2,6 +2,7 @@ package com.example.euphoria.DataBase.Timer
 
 import android.arch.persistence.room.*
 import android.arch.persistence.room.ForeignKey.CASCADE
+import java.io.Serializable
 
 @Entity(tableName = "STOP",
     foreignKeys = [ForeignKey(
@@ -16,7 +17,7 @@ data class Stop (
     @ColumnInfo(name = "TIME") var time: Long = 0,
     @ColumnInfo(name = "TYPE") var type: String?,
     @ColumnInfo(name = "SESSION_ID") var sessionId: Long = 0
-) {
+): Serializable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "UID")
     var uid: Long = 0

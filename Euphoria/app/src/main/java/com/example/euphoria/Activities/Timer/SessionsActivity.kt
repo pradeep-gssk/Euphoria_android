@@ -59,9 +59,19 @@ class SessionsActivity: AppCompatActivity() {
             sessionAdapter?.setOnItemClickListener(object : OnItemClickListener {
                 override fun onItemClick(view: View?, position: Int) {
                     val session = sessions[position]
-                    println(session)
+                    gotoShowSession(session)
                 }
             })
+        }
+    }
+
+    fun gotoShowSession(session: Session) {
+        runOnUiThread {
+            val bundle = Bundle()
+            bundle.putSerializable("session", session)
+            val intent = Intent(this, ShowSessionActivity::class.java)
+            intent.putExtra("bundle", bundle)
+            startActivity(intent)
         }
     }
 

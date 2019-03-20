@@ -63,5 +63,9 @@
         </activity>
         <activity android:name=".Activities.Timer.SoundsActivity">
         </activity>
+        <activity android:name=".Activities.Timer.ShowSessionActivity">
+        </activity>
+        <activity android:name=".Activities.Timer.TimerCountDownActivity">
+        </activity>
     </application>
 </manifest>

@@ -29,6 +29,7 @@
     <string name="delete">delete</string>
     <string name="sessions">my Sessions</string>
     <string name="timer">Timer Setup</string>
+    <string name="countdown">Timer Countdown</string>
     <string name="plus">plus</string>
     <string name="sessionHint">(Name) Session</string>
     <string name="hours">Hours</string>
@@ -41,4 +42,6 @@
     <string name="session">Session</string>
     <string name="cancel">Cancel</string>
     <string name="done">Done</string>
+    <string name="time">hour\u0020\u0020\u0020\u0020\u0020\u0020min\u0020\u0020\u0020\u0020\u0020\u0020sec</string>
+    <string name="zerohms">00:00:00</string>
 </resources>

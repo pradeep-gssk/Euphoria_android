@@ -8,5 +8,7 @@ class Constants {
         val CAMERA = 3
         val EMAIL_RECIPIENT = "euphoriaspa@euphoriaretreat.com"
         val RESULT_SOUND = 4
+        val PLAY = 5
+        val PAUSE = 6
     }
 }
