@@ -1,12 +1,11 @@
 package com.sparta.euphoria.Activities
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.sparta.euphoria.DataBase.DataBaseHelper
-import com.sparta.euphoria.Extensions.getJson
-import com.sparta.euphoria.Extensions.getJsonArray
 import com.sparta.euphoria.R
 
 class MainActivity : AppCompatActivity() {
@@ -21,17 +20,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Thread() {
-            preloadData()
-        }.start()
+//        Thread() {
+//            preloadData()
+//        }.start()
     }
 
     fun didClickForgotPassword(view: View) {
     }
 
     fun didClickSignIn(view: View) {
-//        val intent = Intent(this, HomeActivity:: class.java)
-//        startActivity(intent)
+        val intent = Intent(this, HomeActivity:: class.java)
+        startActivity(intent)
     }
 
     fun preloadData() {
