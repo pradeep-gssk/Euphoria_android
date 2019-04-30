@@ -1,0 +1,139 @@
+{
+    "title": "Questionnaire 2",
+    "questionnaire": [
+        {
+            "index": 0,
+            "optionType": 2,
+            "selectionType": 1,
+            "subOptionType": 0,
+            "question": "Which are the main activities and experiences you are most interest in?",
+            "options": [
+                {
+                    "option": "Relaxation",
+                    "index": 0
+                },
+                {
+                    "option": "Movement",
+                    "index": 1
+                },
+                {
+                    "option": "Healing",
+                    "index": 2
+                },
+                {
+                    "option": "Detox",
+                    "index": 3
+                },
+                {
+                    "option": "Food and nature",
+                    "index": 4
+                },
+                {
+                    "option": "Beauty/pampering",
+                    "index": 5
+                },
+                {
+                    "option": "Recovery",
+                    "index": 6
+                },
+                {
+                    "option": "Weight loss",
+                    "index": 7
+                }
+            ]
+        },
+        {
+            "index": 1,
+            "optionType": 0,
+            "selectionType": 0,
+            "subOptionType": 0,
+            "question": "Do you have a heart condition or suffer from high blood pressure?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "optionType": 2,
+            "selectionType": 0,
+            "subOptionType": 0,
+            "question": "Are you allergic?",
+            "options": [
+                {
+                    "option": "skin allergies",
+                    "index": 0
+                },
+                {
+                    "option": "food allergies",
+                    "index": 1
+                },
+                {
+                    "option": "drug allergy",
+                    "index": 2
+                },
+                {
+                    "option": "no allergy",
+                    "index": 3
+                }
+            ]
+        },
+        {
+            "index": 3,
+            "optionType": 1,
+            "selectionType": 0,
+            "subOptionType": 0,
+            "question": "Are you recovering from an important health condition?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "optionType": 1,
+            "selectionType": 0,
+            "subOptionType": 0,
+            "question": "Do you need to inform us about any detail, special attention we could adopt to make your stay tuned with your needs and requirements?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 5,
+            "optionType": 1,
+            "selectionType": 0,
+            "subOptionType": 0,
+            "question": "Are you presently experiencing any health problem we should be aware of in order to create for you a personalized, safe and helpful stay? Do you have any particular prescriptions from your doctor you need to share with us?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        }
+    ]
+}

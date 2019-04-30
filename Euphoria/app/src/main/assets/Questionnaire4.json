@@ -1,0 +1,195 @@
+{
+    "title": "Questionnaire 4",
+    "questionnaire": [
+        {
+            "index": 0,
+            "optionType": 0,
+            "selectionType": 1,
+            "subOptionType": 0,
+            "question": "How would you like to feel after your treatment?",
+            "options": [
+                {
+                    "option": "Happy",
+                    "index": 0
+                },
+                {
+                    "option": "Balanced",
+                    "index": 1
+                },
+                {
+                    "option": "Calm",
+                    "index": 2
+                },
+                {
+                    "option": "Joyful",
+                    "index": 3
+                },
+                {
+                    "option": "Lighter",
+                    "index": 4
+                },
+                {
+                    "option": "Energetic",
+                    "index": 5
+                },
+                {
+                    "option": "Serene",
+                    "index": 6
+                }
+            ]
+        },
+        {
+            "index": 1,
+            "optionType": 1,
+            "selectionType": 0,
+            "subOptionType": 0,
+            "question": "Do you have a heart condition or suffer from high blood pressure?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "optionType": 1,
+            "selectionType": 0,
+            "subOptionType": 0,
+            "question": "Your blood pressure is:",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 3,
+            "optionType": 1,
+            "selectionType": 0,
+            "subOptionType": 0,
+            "question": "Are you allergic?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "optionType": 1,
+            "selectionType": 0,
+            "subOptionType": 0,
+            "question": "Do you have any contagious skin condition? (example warts)",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 5,
+            "optionType": 1,
+            "selectionType": 0,
+            "subOptionType": 0,
+            "question": "Have you had any surgery in the last 12 months?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "optionType": 1,
+            "selectionType": 0,
+            "subOptionType": 0,
+            "question": "Are you pregnant (for ladies only)?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 7,
+            "optionType": 1,
+            "selectionType": 0,
+            "subOptionType": 0,
+            "question": "Are you currently on any medication (included mood stabylizer, sleeping remedies…)?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "optionType": 1,
+            "selectionType": 0,
+            "subOptionType": 0,
+            "question": "Are you presently experiencing any of the following?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        },
+        {
+            "index": 9,
+            "optionType": 1,
+            "selectionType": 0,
+            "subOptionType": 0,
+            "question": "Do you suffer from any kind of disease?",
+            "options": [
+                {
+                    "option": "No",
+                    "index": 0
+                },
+                {
+                    "option": "Yes",
+                    "index": 1
+                }
+            ]
+        }
+    ]
+}
