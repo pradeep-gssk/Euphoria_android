@@ -43,8 +43,6 @@ class HomeActivity : AppCompatActivity() {
 
         val dividerItemDecoration = DividerItemDecoration(recyclerView.context, 1)
         recyclerView.addItemDecoration(dividerItemDecoration)
-
-
     }
 
     private fun loadAdapter() {
@@ -77,7 +75,6 @@ class HomeActivity : AppCompatActivity() {
 
     fun gotoNextActivity(position: Int) {
         val item = items[position]
-        println(item)
         runOnUiThread {
             val intent = Intent(this, item.cls)
             startActivity(intent)

@@ -25,6 +25,6 @@ interface QuestionnairesDao {
     @Query("SELECT * FROM QUESTIONNAIRES WHERE QINDEX = :index AND CUSTOMER_ID = :customerId")
     fun getQuestionnaire(index: Int, customerId: Int) : Questionnaires
 
-//    @Query("SELECT * FROM QUESTIONNAIRES")
-//    fun getAll(): List<Questionnaires>
+    @Query("SELECT * FROM QUESTIONNAIRES WHERE CUSTOMER_ID = :customerId")
+    fun getQuestionnaires(customerId: Int): List<Questionnaires>
 }

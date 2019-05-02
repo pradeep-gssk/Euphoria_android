@@ -118,6 +118,10 @@ abstract class DataBaseHelper: RoomDatabase() {
         return if (questionnaireList.size > 0) false else true
     }
 
+    fun clearAllAnswers(customerId: Int) {
+        //TODO: clear answers
+    }
+
     private fun addExercises(jsonArray: JSONArray) {
     }
 

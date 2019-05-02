@@ -14,4 +14,16 @@
             android:dividerHeight="0.5dp">
     </android.support.v7.widget.RecyclerView>
 
+    <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="50dp"
+            app:backgroundTint="@color/colorPrimary"
+            android:tint="@android:color/black"
+            app:srcCompat="@android:drawable/ic_input_add"/>
+
 </android.support.constraint.ConstraintLayout>

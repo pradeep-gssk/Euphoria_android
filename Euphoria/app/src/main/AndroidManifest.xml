@@ -34,6 +34,8 @@
         </activity>
         <activity android:name=".Activities.Questionnaires.QuestionnairesActivity">
         </activity>
+        <activity android:name=".Activities.Questionnaires.QuestionnaireActivity">
+        </activity>
     </application>
 
 </manifest>
