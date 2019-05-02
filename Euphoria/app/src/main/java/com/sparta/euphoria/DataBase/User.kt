@@ -14,4 +14,9 @@ data class User (
 
 @Dao
 interface UserDao {
+    @Insert
+    fun insert(entity: User)
+
+    @Query("SELECT * FROM USER WHERE CUSTOMER_ID = :customerId")
+    fun getUser(customerId: Int) : User?
 }

@@ -1,5 +1,7 @@
 package com.sparta.euphoria.Activities
 
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
@@ -10,8 +12,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.sparta.euphoria.DataBase.DataBaseHelper
+import com.sparta.euphoria.Enums.Element
 import com.sparta.euphoria.Enums.HomeType
+import com.sparta.euphoria.Extensions.findElement
 import com.sparta.euphoria.Generic.OnItemClickListener
+import com.sparta.euphoria.Model.EUUser
 import com.sparta.euphoria.R
 
 class HomeActivity : AppCompatActivity() {
@@ -19,6 +25,8 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var recyclerView: RecyclerView
     private var homeAdapter: HomeAdapter? = null
+    private var selectedElement: Element = Element.Earth
+    private var questionnaire1Answered = false
 
     val items: Array<HomeType> by lazy {
         return@lazy HomeType.values()
@@ -27,8 +35,8 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview)
-        setTitle("Home")
-
+        setTitle("HOME")
+        getSelectedElement()
         recyclerView = findViewById(R.id.recycleView)
         linearLayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = linearLayoutManager
@@ -36,27 +44,47 @@ class HomeActivity : AppCompatActivity() {
         val dividerItemDecoration = DividerItemDecoration(recyclerView.context, 1)
         recyclerView.addItemDecoration(dividerItemDecoration)
 
-        if (homeAdapter == null) {
-            homeAdapter = HomeAdapter(items)
-            recyclerView.adapter = homeAdapter
 
-            homeAdapter?.setOnItemClickListener(object : OnItemClickListener {
-                override fun onItemClick(view: View?, position: Int) {
-                    gotoNextActivity(position)
-                }
-            })
+    }
+
+    private fun loadAdapter() {
+        runOnUiThread {
+            if (homeAdapter == null) {
+                homeAdapter = HomeAdapter(items, questionnaire1Answered)
+                recyclerView.adapter = homeAdapter
+
+                homeAdapter?.setOnItemClickListener(object : OnItemClickListener {
+                    override fun onItemClick(view: View?, position: Int) {
+                        gotoNextActivity(position)
+                    }
+                })
+            }
+            else {
+                homeAdapter?.questionnaire1Answered = questionnaire1Answered
+                homeAdapter?.notifyDataSetChanged()
+            }
         }
+    }
+
+    private fun getSelectedElement() {
+        val customerId = EUUser.shared(this).customerId
+        selectedElement = this.findElement(customerId)
+        Thread() {
+            questionnaire1Answered = DataBaseHelper.getDatabase(this).checkIfAllAnswered(1, customerId)
+            loadAdapter()
+        }.start()
     }
 
     fun gotoNextActivity(position: Int) {
         val item = items[position]
+        println(item)
         runOnUiThread {
-//            val intent = Intent(this, item.cls)
-//            startActivity(intent)
+            val intent = Intent(this, item.cls)
+            startActivity(intent)
         }
     }
 
-    private class HomeAdapter(private val list: Array<HomeType>) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+    private class HomeAdapter(private val list: Array<HomeType>, var questionnaire1Answered: Boolean) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
         class ViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
             RecyclerView.ViewHolder(inflater.inflate(R.layout.recycleview_adapter, parent, false)) {
 
@@ -97,7 +125,22 @@ class HomeActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
             p0.bind(list[p1])
+
+            if (p1 == 1 || p1 == 2) {
+                if (questionnaire1Answered == false) {
+                    p0.itemView.alpha = 0.6F
+                    p0.itemView.setBackgroundColor(Color.parseColor("#c7c8ca"))
+                }
+                else {
+                    p0.itemView.alpha = 1F
+                    p0.itemView.setBackgroundColor(Color.TRANSPARENT)
+                }
+            }
+
             p0.itemView.setOnClickListener { v: View? ->
+                if ((p1 == 1 || p1 == 2) && questionnaire1Answered == false) {
+                    return@setOnClickListener
+                }
                 listener.onItemClick(v, p1)
             }
         }

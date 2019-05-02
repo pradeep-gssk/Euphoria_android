@@ -6,6 +6,7 @@ import java.io.Serializable
 @Entity(tableName = "QUESTIONNAIRES")
 data class Questionnaires (
     @ColumnInfo(name = "CUSTOMER_ID") var customerId: Int = 0,
+    @ColumnInfo(name = "QINDEX") var index: Int = 0,
     @ColumnInfo(name = "STATE") var state: Int = 0,
     @ColumnInfo(name = "TITLE") var title: String?,
     @ColumnInfo(name = "TOTAL") var total: Int = 0
@@ -20,6 +21,9 @@ data class Questionnaires (
 interface QuestionnairesDao {
     @Insert
     fun insert(questionnaires: Questionnaires): Long
+
+    @Query("SELECT * FROM QUESTIONNAIRES WHERE QINDEX = :index AND CUSTOMER_ID = :customerId")
+    fun getQuestionnaire(index: Int, customerId: Int) : Questionnaires
 
 //    @Query("SELECT * FROM QUESTIONNAIRES")
 //    fun getAll(): List<Questionnaires>

@@ -57,20 +57,20 @@ abstract class DataBaseHelper: RoomDatabase() {
     }
 
     fun preloadData(application: Application, customerId: Int) {
-        addQuestionnaires("Questionnaire1.json".getJson(application), customerId)
-        addQuestionnaires("Questionnaire2.json".getJson(application), customerId)
-        addQuestionnaires("Questionnaire3.json".getJson(application), customerId)
-        addQuestionnaires("Questionnaire4.json".getJson(application), customerId)
-        addQuestionnaires("Questionnaire5.json".getJson(application), customerId)
+        addQuestionnaires("Questionnaire1.json".getJson(application), 1, customerId)
+        addQuestionnaires("Questionnaire2.json".getJson(application), 2, customerId)
+        addQuestionnaires("Questionnaire3.json".getJson(application), 3, customerId)
+        addQuestionnaires("Questionnaire4.json".getJson(application), 4, customerId)
+        addQuestionnaires("Questionnaire5.json".getJson(application), 5, customerId)
         addExercises("Exercises.json".getJsonArray(application))
         addSounds("Sounds.json".getJsonArray(application))
         addVideos("Videos.json".getJsonArray(application))
         addDiet("Diet.json".getJsonArray(application))
     }
 
-    private fun addQuestionnaires(jsonObject: JSONObject, customerId: Int) {
+    private fun addQuestionnaires(jsonObject: JSONObject, index: Int, customerId: Int) {
         val array = jsonObject.getJSONArray("questionnaire")
-        val questionnaires = Questionnaires(customerId, 0, jsonObject.stringValue("title"), array.length())
+        val questionnaires = Questionnaires(customerId, index, 0, jsonObject.stringValue("title"), array.length())
         val questionnairesId = questionnairesDao().insert(questionnaires)
         addQuestionnaire(array, questionnairesId)
     }
@@ -108,6 +108,16 @@ abstract class DataBaseHelper: RoomDatabase() {
         optionDao().insertAll(options)
     }
 
+    fun checkIfAllAnswered(index: Int, customerId: Int): Boolean {
+        val questionnairesObject = questionnairesDao().getQuestionnaire(index, customerId)
+        println(questionnairesObject)
+        println(questionnairesObject.uid)
+        val questionnaireList = questionnaireDao().getAnsweredQuestionnaireList(questionnairesObject.uid)
+        println(questionnaireList)
+        println(questionnaireList.size)
+        return if (questionnaireList.size > 0) false else true
+    }
+
     private fun addExercises(jsonArray: JSONArray) {
     }
 
@@ -118,5 +128,18 @@ abstract class DataBaseHelper: RoomDatabase() {
     }
 
     private fun addDiet(jsonArray: JSONArray) {
+    }
+
+    //User
+    fun saveUser(customerId: Int) {
+        println("Save User")
+        val user = User(customerId)
+        userDao().insert(user)
+    }
+
+    fun checkIfUserExist(customerId: Int): Boolean {
+        val user = userDao().getUser(customerId)
+        println("came here")
+        return  if (user == null) false else true
     }
 }

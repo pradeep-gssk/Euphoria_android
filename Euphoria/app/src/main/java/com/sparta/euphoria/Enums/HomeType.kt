@@ -1,8 +1,8 @@
 package com.sparta.euphoria.Enums
 
-import android.media.Image
 import android.support.v7.app.AppCompatActivity
-import com.sparta.euphoria.Activities.*
+import com.sparta.euphoria.Activities.HomeActivity
+import com.sparta.euphoria.Activities.Questionnaires.QuestionnairesActivity
 import com.sparta.euphoria.R
 
 enum class HomeType(val title: String,
@@ -16,7 +16,7 @@ enum class HomeType(val title: String,
         "Q",
         R.mipmap.oval_blue,
         R.mipmap.rectangle_blue,
-        HomeActivity::class.java as Class<AppCompatActivity>
+        QuestionnairesActivity::class.java as Class<AppCompatActivity>
     ),
 
     Diet(
@@ -24,7 +24,7 @@ enum class HomeType(val title: String,
         "D",
         R.mipmap.oval_green,
         R.mipmap.rectangle_green,
-        HomeActivity::class.java as Class<AppCompatActivity>
+        QuestionnairesActivity::class.java as Class<AppCompatActivity>
     ),
 
     Exercises(
@@ -32,7 +32,7 @@ enum class HomeType(val title: String,
         "E",
         R.mipmap.oval_red,
         R.mipmap.rectangle_red,
-        HomeActivity::class.java as Class<AppCompatActivity>
+        QuestionnairesActivity::class.java as Class<AppCompatActivity>
     ),
 
     Activities(
@@ -40,7 +40,7 @@ enum class HomeType(val title: String,
         "A",
         R.mipmap.oval_brown,
         R.mipmap.rectangle_brown,
-        HomeActivity::class.java as Class<AppCompatActivity>
+        QuestionnairesActivity::class.java as Class<AppCompatActivity>
     ),
 
     History(
@@ -48,7 +48,7 @@ enum class HomeType(val title: String,
         "H",
         R.mipmap.oval_blue,
         R.mipmap.rectangle_blue,
-        HomeActivity::class.java as Class<AppCompatActivity>
+        QuestionnairesActivity::class.java as Class<AppCompatActivity>
     ),
 
     Gallery(
@@ -56,7 +56,7 @@ enum class HomeType(val title: String,
         "G",
         R.mipmap.oval_green,
         R.mipmap.rectangle_green,
-        HomeActivity::class.java as Class<AppCompatActivity>
+        QuestionnairesActivity::class.java as Class<AppCompatActivity>
     ),
 
     Timer(
@@ -64,6 +64,6 @@ enum class HomeType(val title: String,
         "T",
         R.mipmap.oval_red,
         R.mipmap.rectangle_red,
-        HomeActivity::class.java as Class<AppCompatActivity>
+        QuestionnairesActivity::class.java as Class<AppCompatActivity>
     );
 }

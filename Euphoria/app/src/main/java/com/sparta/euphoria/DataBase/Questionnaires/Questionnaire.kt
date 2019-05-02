@@ -31,6 +31,13 @@ interface QuestionnaireDao {
     @Insert
     fun insert(entity: Questionnaire): Long
 
+    @Query("SELECT * FROM QUESTIONNAIRE WHERE ((((OPTION_TYPE = 0) OR (OPTION_TYPE = 1)) AND (ANSWER is null)) OR ((OPTION_TYPE = 2) AND (ANSWER is null) AND (DETAILS is null))) AND (QUESTIONNAIRES_ID = :questionnairesId)")
+    fun getAnsweredQuestionnaireList(questionnairesId: Long): List<Questionnaire>
+
+
+//    @Query("SELECT * FROM QUESTIONNAIRE WHERE QUESTIONNAIRES_ID = :questionnairesId")
+//    fun getQuestionnaireList(questionnairesId: Long): List<Questionnaire>
+
 //    @Query("SELECT * FROM QUESTIONNAIRE WHERE QUESTIONNAIRES_ID = :questionnairesId")
 //    fun getChildQuestionnaire(questionnairesId: Long): List<Questionnaire>
 //
