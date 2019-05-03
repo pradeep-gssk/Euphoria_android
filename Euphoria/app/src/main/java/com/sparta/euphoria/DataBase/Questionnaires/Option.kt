@@ -24,6 +24,6 @@ interface OptionDao {
     @Insert
     fun insertAll(entity: ArrayList<Option>)
 
-//    @Query("SELECT * FROM OPTION WHERE QUESTIONNAIRE_ID = :questionnaireId")
-//    fun getChildOptions(questionnaireId: Long): List<Option>
+    @Query("SELECT * FROM OPTION WHERE QUESTIONNAIRE_ID = :questionnaireId")
+    fun getOptions(questionnaireId: Long): List<Option>
 }

@@ -9,4 +9,9 @@
     <string name="terms">By logging in, you confirm you have read and agree to our Privacy Policy.</string>
     <string name="character">character</string>
     <string name="accessory">accessory</string>
+    <string name="logo_circle">logoCircle</string>
+    <string name="previous">previous</string>
+    <string name="next">next</string>
+    <string name="specify">Please Specify</string>
+    <string name="other">Other</string>
 </resources>
