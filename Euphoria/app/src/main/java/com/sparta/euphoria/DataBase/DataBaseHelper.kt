@@ -118,6 +118,11 @@ abstract class DataBaseHelper: RoomDatabase() {
         return if (questionnaireList.size > 0) false else true
     }
 
+    fun getElementCount(element: String, questionnaireId: Long) : Int {
+        val questionnaireList = questionnaireDao().getQuestionnaireForElement("Yes", element, questionnaireId)
+        return if (questionnaireList.isEmpty()) 0 else questionnaireList.size
+    }
+
     fun clearAllAnswers(customerId: Int) {
         //TODO: clear answers
     }

@@ -37,10 +37,12 @@ interface QuestionnaireDao {
     @Query("SELECT * FROM QUESTIONNAIRE WHERE QUESTIONNAIRES_ID = :questionnairesId")
     fun getQuestionnaireList(questionnairesId: Long): List<Questionnaire>
 
-//
-//    @Query("UPDATE QUESTIONNAIRE SET ANSWER = :answer WHERE UID = :uid")
-//    fun updateAnswer(answer: String?, uid: Long)
-//
-//    @Query("UPDATE QUESTIONNAIRE SET DETAILS = :detail WHERE UID = :uid")
-//    fun updateDetail(detail: String?, uid: Long)
+    @Query("SELECT * FROM QUESTIONNAIRE WHERE ANSWER = :answer AND ELEMENT = :element AND QUESTIONNAIRES_ID = :questionnairesId")
+    fun getQuestionnaireForElement(answer: String, element: String, questionnairesId: Long): List<Questionnaire>
+
+    @Query("UPDATE QUESTIONNAIRE SET ANSWER = :answer WHERE UID = :uid")
+    fun updateAnswer(answer: String?, uid: Long)
+
+    @Query("UPDATE QUESTIONNAIRE SET DETAILS = :detail WHERE UID = :uid")
+    fun updateDetail(detail: String?, uid: Long)
 }

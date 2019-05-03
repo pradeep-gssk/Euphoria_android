@@ -28,6 +28,7 @@
             android:layout_width="0dp"
             android:contentDescription="@string/accessory"
             android:layout_height="match_parent"
+            android:layout_marginEnd="20dp"
             app:layout_constraintStart_toEndOf="@id/titleTextView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -15,8 +15,14 @@ import com.sparta.euphoria.DataBase.DataBaseHelper
 import com.sparta.euphoria.DataBase.Questionnaires.Option
 import com.sparta.euphoria.DataBase.Questionnaires.Questionnaire
 import com.sparta.euphoria.DataBase.Questionnaires.Questionnaires
+import com.sparta.euphoria.Enums.Element
+import com.sparta.euphoria.Enums.OptionType
+import com.sparta.euphoria.Enums.SelectionType
+import com.sparta.euphoria.Extensions.boolValue
+import com.sparta.euphoria.Extensions.findElement
 import com.sparta.euphoria.Generic.BaseViewHolder
-import com.sparta.euphoria.Generic.OnItemClickListener
+import com.sparta.euphoria.Generic.OnQuestionnaireItemClickListener
+import com.sparta.euphoria.Model.EUUser
 import com.sparta.euphoria.Model.Section
 import com.sparta.euphoria.R
 
@@ -31,12 +37,14 @@ class QuestionnaireActivity: AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var question: Questionnaire
+    var selectedElement: Element? = null
+    var allQuestionsAnswered: Boolean = false
     private var optionAdapter: QuestionnaireAdapter? = null
 
     var currentIndex = 0
     var questionsList: List<Questionnaire> = emptyList()
     var sections = ArrayList<Section>()
-    var questionnaireIndex = 0
+    private lateinit var questionnaires: Questionnaires
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,14 +62,25 @@ class QuestionnaireActivity: AppCompatActivity() {
 
         val bundle = intent.extras.getBundle("bundle")
         if (bundle != null) {
-            val questionnaire = bundle.get("questionnaire") as Questionnaires
-            mTitleTextView?.text = questionnaire.title
-            questionnaireIndex = questionnaire.index
+            questionnaires = bundle.get("questionnaire") as Questionnaires
+            mTitleTextView?.text = questionnaires.title
             Thread() {
+                initializeValues()
                 questionsList = DataBaseHelper.getDatabase(applicationContext).questionnaireDao()
-                    .getQuestionnaireList(questionnaire.uid)
-                showQuestionnaire()
+                    .getQuestionnaireList(questionnaires.uid)
+                loadQuestionnaire()
             }.start()
+        }
+    }
+
+    fun initializeValues() {
+        val customerId = EUUser.shared(this).customerId
+        if (questionnaires.index == 1 &&
+            DataBaseHelper.getDatabase(this).checkIfAllAnswered(questionnaires.index, customerId)) {
+            selectedElement = findElement(this, questionnaires.uid)
+        }
+        else if (questionnaires.index != 1) {
+            allQuestionsAnswered = DataBaseHelper.getDatabase(this).checkIfAllAnswered(questionnaires.index, customerId)
         }
     }
 
@@ -75,12 +94,10 @@ class QuestionnaireActivity: AppCompatActivity() {
         }
     }
 
-    fun showQuestionnaire() {
+    fun loadQuestionnaire() {
         question = questionsList[currentIndex]
-
         runOnUiThread {
-
-            if (questionnaireIndex == 1) {
+            if (questionnaires.index == 1) {
                 val text = "● " + question.question
                 val ss = SpannableString(text)
                 val fcsColor = ForegroundColorSpan(getColorId(question.colorIndex))
@@ -113,12 +130,12 @@ class QuestionnaireActivity: AppCompatActivity() {
 
     fun didClickPrevious(view: View) {
         currentIndex -= 1
-        showQuestionnaire()
+        loadQuestionnaire()
     }
 
     fun didClickNext(view: View) {
         currentIndex += 1
-        showQuestionnaire()
+        loadQuestionnaire()
     }
 
     fun setSections() {
@@ -126,30 +143,144 @@ class QuestionnaireActivity: AppCompatActivity() {
             val options = DataBaseHelper.getDatabase(applicationContext).optionDao().getOptions(question.uid)
             sections.clear()
 
+            val answer = question.answer
+            var dictionary: Map<String, String> = emptyMap()
+            val selectionType = SelectionType.getSelectionType(question.selectionType)
+            if (selectionType == SelectionType.multiple &&
+                answer != null) {
+                val answers = answer.split(", ")
+                dictionary = answers.associate { it to "0" }
+            }
+
             for (i in 0..(options.size - 1)) {
                 val obj = options[i]
-                val section = Section(obj, 0 , i)
+                val section = Section(obj, 0 , i, dictionary)
                 sections.add(section)
             }
 
+            val optionType = OptionType.getOptionType(question.optionType)
+
+            when(optionType) {
+                OptionType.always -> {
+                    val section = Section(optionType.resId, 1, 0)
+                    sections.add(section)
+                }
+
+                OptionType.toggle -> {
+                    if (question.answer.boolValue()) {
+                        val section = Section(optionType.resId, 1, 0)
+                        sections.add(section)
+                    }
+                }
+                else -> { }
+            }
+           loadAdapterWithSections(selectionType)
         }.start()
     }
 
-    private class QuestionnaireAdapter(var list: List<Section>, var answer: String?, var detail: String?, var activity: QuestionnaireActivity):
+    fun loadAdapterWithSections(selectionType: SelectionType?) {
+        runOnUiThread {
+            if (optionAdapter == null) {
+                optionAdapter = QuestionnaireAdapter(
+                    sections,
+                    question.answer,
+                    question.details,
+                    selectionType
+                )
+                recyclerView.adapter = optionAdapter
+            }
+            else {
+                optionAdapter?.list = sections
+                optionAdapter?.answer = question.answer
+                optionAdapter?.detail = question.details
+                optionAdapter?.notifyDataSetChanged()
+            }
+
+            optionAdapter?.setOnQuestionnaireItemClickListener(object : OnQuestionnaireItemClickListener {
+                override fun toolBarVisibility(hasFocus: Boolean) {
+                    mToolbar?.visibility = if (hasFocus) View.INVISIBLE else View.VISIBLE
+                }
+
+                override fun onItemClick(view: View?, position: Int) {
+                    val section = sections[position]
+                    val item = section.item
+                    if (section.section == 0 && (item is Option)) {
+                        val answer = item.option
+                        if (SelectionType.getSelectionType(question.selectionType) == SelectionType.multiple && answer != null) {
+                            val answers = section.answers.keys.toMutableList()
+
+                            if (answers.contains(answer)) {
+                                answers.remove(answer)
+                            }
+                            else {
+                                answers.add(answer)
+                            }
+
+                            val result = answers.joinToString(separator = ", ")
+                            updateAnswer(result)
+                        }
+                        else {
+                            updateAnswer(item.option)
+                        }
+                    }
+                }
+
+                override fun updateDetails(details: String) {
+                    this@QuestionnaireActivity.updateDetails(details)
+                }
+            })
+        }
+    }
+
+    fun updateAnswer(answer: String?) {
+        Thread() {
+            DataBaseHelper.getDatabase(applicationContext).questionnaireDao().updateAnswer(answer, question.uid)
+            question.answer = answer
+
+            val optionType = OptionType.getOptionType(question.optionType)
+            when(optionType) {
+                OptionType.always -> {
+                    if (SelectionType.getSelectionType(question.selectionType) == SelectionType.single) {
+                        updateDetails(null)
+                    }
+                }
+
+                OptionType.toggle -> {
+                    if (!question.answer.boolValue()) {
+                        updateDetails(null)
+                    }
+                }
+                else -> { }
+            }
+            setSections()
+        }.start()
+    }
+
+    fun updateDetails(details: String?) {
+        Thread() {
+            DataBaseHelper.getDatabase(applicationContext).questionnaireDao().updateDetail(details, question.uid)
+            question.details = details
+        }.start()
+    }
+
+    private class QuestionnaireAdapter(var list: List<Section>,
+                                       var answer: String?,
+                                       var detail: String?,
+                                       var selectionType: SelectionType?):
         RecyclerView.Adapter<BaseViewHolder<Section>>() {
 
-        lateinit var listener: OnItemClickListener
+        lateinit var listener: OnQuestionnaireItemClickListener
 
-        fun setOnItemClickListener(listener: OnItemClickListener) {
+        fun setOnQuestionnaireItemClickListener(listener: OnQuestionnaireItemClickListener) {
             this.listener = listener
         }
 
         override fun onCreateViewHolder(p0: ViewGroup, p1: Int): BaseViewHolder<Section> {
             if (p1 == 1) {
-                return OtherHolder(p0, R.layout.other_adapter, detail, activity)
+                return OtherHolder(p0, R.layout.other_adapter, detail, listener)
             }
 
-            return OptionHolder(p0, R.layout.option_adapter, answer)
+            return OptionHolder(p0, R.layout.option_adapter, answer, selectionType)
         }
 
         override fun getItemCount(): Int {
@@ -157,21 +288,21 @@ class QuestionnaireActivity: AppCompatActivity() {
         }
 
         override fun onBindViewHolder(p0: BaseViewHolder<Section>, p1: Int) {
-//            if (p0 is OptionHolder) {
-//                p0.answer = answer
-//            }
-//            else if (p0 is OtherHolder) {
-//                p0.detail = detail
-//            }
-//
-//            val section = list[p1]
-//            p0.bindData(section)
-//
-//            if (section.section == 0) {
-//                p0.itemView.setOnClickListener { v: View? ->
-//                    listener.onItemClick(v, p1)
-//                }
-//            }
+            if (p0 is OptionHolder) {
+                p0.answer = answer
+            }
+            else if (p0 is OtherHolder) {
+                p0.detail = detail
+            }
+
+            val section = list[p1]
+            p0.bindData(section)
+
+            if (section.section == 0) {
+                p0.itemView.setOnClickListener { v: View? ->
+                    listener.onItemClick(v, p1)
+                }
+            }
         }
 
         override fun getItemViewType(position: Int): Int {
@@ -181,7 +312,8 @@ class QuestionnaireActivity: AppCompatActivity() {
     }
 
     private class OptionHolder(parent: ViewGroup, layoutID: Int,
-                               var answer: String?):
+                               var answer: String?,
+                               var selectionType: SelectionType?):
         BaseViewHolder<Section>(parent, layoutID) {
         private var mTitleTextView: TextView? = null
         private var mAccessoryImage: ImageView? = null
@@ -196,8 +328,18 @@ class QuestionnaireActivity: AppCompatActivity() {
 
             if (model.section == 0 && (item is Option)) {
                 mTitleTextView?.text = item.option
-                if (item.option == answer) {
-                    mAccessoryImage?.setImageResource(R.mipmap.ic_launcher)
+                val answers = model.answers
+
+                if (selectionType != null && selectionType == SelectionType.multiple && answers.size > 0) {
+                    if (answers.containsKey(item.option)) {
+                        mAccessoryImage?.setImageResource(R.mipmap.checkmark_white)
+                    }
+                    else {
+                        mAccessoryImage?.setImageResource(0)
+                    }
+                }
+                else if (item.option == answer) {
+                    mAccessoryImage?.setImageResource(R.mipmap.checkmark_white)
                 }
                 else {
                     mAccessoryImage?.setImageResource(0)
@@ -208,16 +350,16 @@ class QuestionnaireActivity: AppCompatActivity() {
 
     private class OtherHolder(parent: ViewGroup, layoutID: Int,
                               var detail: String?,
-                              var activity: QuestionnaireActivity):
+                              listener: OnQuestionnaireItemClickListener):
         BaseViewHolder<Section>(parent, layoutID) {
         private var mOtherEditText: EditText? = null
 
         init {
             mOtherEditText = itemView.findViewById(R.id.otherEditText)
             mOtherEditText?.setOnFocusChangeListener { v, hasFocus ->
-                activity.mToolbar?.visibility = if (hasFocus) View.INVISIBLE else View.VISIBLE
+                listener.toolBarVisibility(hasFocus)
                 if (!hasFocus) {
-//                    activity.updateDetails(mOtherEditText?.text.toString())
+                    listener.updateDetails(mOtherEditText?.text.toString())
                 }
             }
         }

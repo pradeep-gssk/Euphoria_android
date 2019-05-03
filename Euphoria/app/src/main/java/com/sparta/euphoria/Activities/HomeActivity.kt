@@ -66,8 +66,9 @@ class HomeActivity : AppCompatActivity() {
 
     private fun getSelectedElement() {
         val customerId = EUUser.shared(this).customerId
-        selectedElement = this.findElement(customerId)
         Thread() {
+            val questionnaires = DataBaseHelper.getDatabase(this).questionnairesDao().getQuestionnaire(1, customerId)
+            selectedElement = this.findElement(this, questionnaires.uid)
             questionnaire1Answered = DataBaseHelper.getDatabase(this).checkIfAllAnswered(1, customerId)
             loadAdapter()
         }.start()
