@@ -51,7 +51,12 @@
         </activity>
         <activity android:name=".Activities.Exercises.ExerciseViewActivity">
         </activity>
-
+        <activity android:name=".Activities.Activities.EUActivitiesList">
+        </activity>
+        <activity android:name=".Activities.Activities.EUCalendarActivity">
+        </activity>
+        <activity android:name=".Activities.Activities.EUProgrammes">
+        </activity>
         <activity android:name=".Activities.History.HistoryActivity">
         </activity>
         <activity android:name=".Activities.History.HistoryIndexActivity">

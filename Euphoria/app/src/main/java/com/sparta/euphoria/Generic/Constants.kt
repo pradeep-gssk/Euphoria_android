@@ -14,5 +14,6 @@ class Constants {
         val RESULT_SOUND = 4
         val PLAY = 5
         val PAUSE = 6
+        val PROGRAM_PATH = "https://www.euphoriaretreat.com/en/offers"
     }
 }
