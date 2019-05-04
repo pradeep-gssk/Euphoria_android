@@ -49,6 +49,15 @@
         <activity android:name=".Activities.Exercises.ExerciseViewActivity">
         </activity>
 
+
+        <activity android:name=".Activities.Gallery.GalleryActivity">
+        </activity>
+        <activity android:name=".Activities.Gallery.VideosActivity">
+        </activity>
+        <activity android:name=".Activities.Gallery.VideosIndexActivity">
+        </activity>
+        <activity android:name=".Activities.Gallery.VideoViewActivity">
+        </activity>
         <activity android:name=".Activities.Timer.SessionsActivity">
         </activity>
         <activity android:name=".Activities.Timer.TimerSetupActivity">

@@ -12,6 +12,7 @@
     <color name="defaultTextColor">#4A4A4A</color>
     <color name="sectionHeader">#979797</color>
     <color name="videoBgRed">#B54943</color>
+    <color name="videoBgGreen">#90937B</color>
     <color name="sessionBg">#968A87</color>
     <color name="divider">#55000000</color>
     <color name="timer">#92382f</color>

@@ -3,6 +3,7 @@ package com.sparta.euphoria.Enums
 import android.support.v7.app.AppCompatActivity
 import com.sparta.euphoria.Activities.Diet.DietActivity
 import com.sparta.euphoria.Activities.Exercises.ExerciseActivity
+import com.sparta.euphoria.Activities.Gallery.GalleryActivity
 import com.sparta.euphoria.Activities.Questionnaires.QuestionnairesActivity
 import com.sparta.euphoria.Activities.Timer.SessionsActivity
 import com.sparta.euphoria.R
@@ -58,7 +59,7 @@ enum class HomeType(val title: String,
         "G",
         R.mipmap.oval_green,
         R.mipmap.rectangle_green,
-        QuestionnairesActivity::class.java as Class<AppCompatActivity>
+        GalleryActivity::class.java as Class<AppCompatActivity>
     ),
 
     Timer(

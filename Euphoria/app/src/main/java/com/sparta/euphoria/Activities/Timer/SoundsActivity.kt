@@ -1,6 +1,7 @@
 package com.sparta.euphoria.Activities.Timer
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
@@ -27,6 +28,7 @@ class SoundsActivity: AppCompatActivity() {
     private var soundsAdapter: SoundsAdapter? = null
     private var previousIndex = -1
     private var selectedSound: Sound? = null
+    private var mp: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,10 +81,17 @@ class SoundsActivity: AppCompatActivity() {
                     sound.isSelected = true
                     previousIndex = position
                     selectedSound = sound.sound
+                    playSound(sound)
                     loadAdapter()
                 }
             })
         }
+    }
+
+    fun playSound(sound: EUSound) {
+        val resId = this.resources.getIdentifier(sound.sound.resource, "raw", this.packageName)
+        mp = MediaPlayer.create(this, resId)
+        mp?.start()
     }
 
     override fun onBackPressed() {

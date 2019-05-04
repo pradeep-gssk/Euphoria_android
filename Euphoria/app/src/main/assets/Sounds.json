@@ -1,277 +1,277 @@
 [
     {
-        "name": "Bell-01",
-        "resource": "Bell-01",
+        "name": "Bell 01",
+        "resource": "bell_01",
         "type": "wav"
     },
     {
-        "name": "Bell-02",
-        "resource": "Bell-02",
+        "name": "Bell 02",
+        "resource": "bell_02",
         "type": "wav"
     },
     {
-        "name": "Bell-03",
-        "resource": "Bell-03",
+        "name": "Bell 03",
+        "resource": "bell_03",
         "type": "wav"
     },
     {
-        "name": "Bell-04",
-        "resource": "Bell-04",
+        "name": "Bell 04",
+        "resource": "bell_04",
         "type": "wav"
     },
     {
-        "name": "Bell-05",
-        "resource": "Bell-05",
+        "name": "Bell 05",
+        "resource": "bell_05",
         "type": "wav"
     },
     {
-        "name": "Bell-06",
-        "resource": "Bell-06",
+        "name": "Bell 06",
+        "resource": "bell_06",
         "type": "wav"
     },
     {
-        "name": "Bell-07",
-        "resource": "Bell-07",
+        "name": "Bell 07",
+        "resource": "bell_07",
         "type": "wav"
     },
     {
-        "name": "Bell-08",
-        "resource": "Bell-08",
+        "name": "Bell 08",
+        "resource": "bell_08",
         "type": "wav"
     },
     {
-        "name": "Bell-09",
-        "resource": "Bell-09",
+        "name": "Bell 09",
+        "resource": "bell_09",
         "type": "wav"
     },
     {
-        "name": "Bell-10",
-        "resource": "Bell-10",
+        "name": "Bell 10",
+        "resource": "bell_10",
         "type": "wav"
     },
     {
-        "name": "Bell-11",
-        "resource": "Bell-11",
+        "name": "Bell 11",
+        "resource": "bell_11",
         "type": "wav"
     },
     {
         "name": "Sound 01",
-        "resource": "Sound-01",
+        "resource": "sound_01",
         "type": "wav"
     },
     {
         "name": "Sound 02",
-        "resource": "Sound-02",
+        "resource": "sound_02",
         "type": "wav"
     },
     {
         "name": "Sound 03",
-        "resource": "Sound-03",
+        "resource": "sound_03",
         "type": "wav"
     },
     {
         "name": "Sound 04",
-        "resource": "Sound-04",
+        "resource": "sound_04",
         "type": "wav"
     },
     {
         "name": "Sound 05",
-        "resource": "Sound-05",
+        "resource": "sound_05",
         "type": "wav"
     },
     {
         "name": "Sound 06",
-        "resource": "Sound-06",
+        "resource": "sound_06",
         "type": "wav"
     },
     {
         "name": "Sound 07",
-        "resource": "Sound-07",
+        "resource": "sound_07",
         "type": "wav"
     },
     {
         "name": "Sound 08",
-        "resource": "Sound-08",
+        "resource": "sound_08",
         "type": "wav"
     },
     {
         "name": "Sound 09",
-        "resource": "Sound-09",
+        "resource": "sound_09",
         "type": "wav"
     },
     {
         "name": "Sound 10",
-        "resource": "Sound-10",
+        "resource": "sound_10",
         "type": "wav"
     },
     {
         "name": "Sound 11",
-        "resource": "Sound-11",
+        "resource": "sound_11",
         "type": "wav"
     },
     {
         "name": "Sound 12",
-        "resource": "Sound-12",
+        "resource": "sound_12",
         "type": "wav"
     },
     {
         "name": "Sound 13",
-        "resource": "Sound-13",
+        "resource": "sound_13",
         "type": "wav"
     },
     {
         "name": "Sound 14",
-        "resource": "Sound-14",
+        "resource": "sound_14",
         "type": "wav"
     },
     {
         "name": "Sound 15",
-        "resource": "Sound-15",
+        "resource": "sound_15",
         "type": "wav"
     },
     {
         "name": "Sound 16",
-        "resource": "Sound-16",
+        "resource": "sound_16",
         "type": "wav"
     },
     {
         "name": "Sound 17",
-        "resource": "Sound-17",
+        "resource": "sound_17",
         "type": "wav"
     },
     {
         "name": "Sound 18",
-        "resource": "Sound-18",
+        "resource": "sound_18",
         "type": "wav"
     },
     {
         "name": "Sound 19",
-        "resource": "Sound-19",
+        "resource": "sound_19",
         "type": "wav"
     },
     {
         "name": "Sound 20",
-        "resource": "Sound-20",
+        "resource": "sound_20",
         "type": "wav"
     },
     {
         "name": "Sound 21",
-        "resource": "Sound-21",
+        "resource": "sound_21",
         "type": "wav"
     },
     {
         "name": "Sound 22",
-        "resource": "Sound-22",
+        "resource": "sound_22",
         "type": "wav"
     },
     {
         "name": "Sound 23",
-        "resource": "Sound-23",
+        "resource": "sound_23",
         "type": "wav"
     },
     {
         "name": "Sound 24",
-        "resource": "Sound-24",
+        "resource": "sound_24",
         "type": "wav"
     },
     {
         "name": "Sound 25",
-        "resource": "Sound-25",
+        "resource": "sound_25",
         "type": "wav"
     },
     {
         "name": "Sound 26",
-        "resource": "Sound-26",
+        "resource": "sound_26",
         "type": "wav"
     },
     {
         "name": "Sound 27",
-        "resource": "Sound-27",
+        "resource": "sound_27",
         "type": "wav"
     },
     {
         "name": "Sound 28",
-        "resource": "Sound-28",
+        "resource": "sound_28",
         "type": "wav"
     },
     {
         "name": "Sound 29",
-        "resource": "Sound-29",
+        "resource": "sound_29",
         "type": "wav"
     },
     {
         "name": "Sound 30",
-        "resource": "Sound-30",
+        "resource": "sound_30",
         "type": "wav"
     },
     {
         "name": "Sound 31",
-        "resource": "Sound-31",
+        "resource": "sound_31",
         "type": "wav"
     },
     {
         "name": "Sound 32",
-        "resource": "Sound-32",
+        "resource": "sound_32",
         "type": "wav"
     },
     {
         "name": "Sound 33",
-        "resource": "Sound-33",
+        "resource": "sound_33",
         "type": "wav"
     },
     {
         "name": "Sound 34",
-        "resource": "Sound-34",
+        "resource": "sound_34",
         "type": "wav"
     },
     {
         "name": "Sound 35",
-        "resource": "Sound-35",
+        "resource": "sound_35",
         "type": "wav"
     },
     {
         "name": "Sound 36",
-        "resource": "Sound-36",
+        "resource": "sound_36",
         "type": "wav"
     },
     {
         "name": "Sound 37",
-        "resource": "Sound-37",
+        "resource": "sound_37",
         "type": "wav"
     },
     {
         "name": "Sound 38",
-        "resource": "Sound-38",
+        "resource": "sound_38",
         "type": "wav"
     },
     {
         "name": "Sound 39",
-        "resource": "Sound-39",
+        "resource": "sound_39",
         "type": "wav"
     },
     {
         "name": "Sound 40",
-        "resource": "Sound-40",
+        "resource": "sound_40",
         "type": "wav"
     },
     {
         "name": "Sound 41",
-        "resource": "Sound-41",
+        "resource": "sound_41",
         "type": "wav"
     },
     {
         "name": "Sound 42",
-        "resource": "Sound-42",
+        "resource": "sound_42",
         "type": "wav"
     },
     {
         "name": "Sound 43",
-        "resource": "Sound-43",
+        "resource": "sound_43",
         "type": "wav"
     },
     {
         "name": "Sound 44",
-        "resource": "Sound-44",
+        "resource": "sound_44",
         "type": "wav"
     }
 ]

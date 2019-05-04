@@ -1,5 +1,6 @@
 package com.sparta.euphoria.Activities.Timer
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.support.v7.app.AppCompatActivity
@@ -28,6 +29,7 @@ class TimerCountDownActivity: AppCompatActivity() {
     private lateinit var stopButton: ImageButton
     private var countDownTimer: CountDownTimer? = null
     private var tempStops = ArrayList<Stop>()
+    private var mp: MediaPlayer? = null
 
     var mProgress = 1
     var stopTime: Long = 0
@@ -89,7 +91,11 @@ class TimerCountDownActivity: AppCompatActivity() {
                 progressTextView.text = secondsCompleted.fullDuration()
                 setProgress(mProgress, endTime.toInt())
                 mProgress = mProgress + 1
-            }
+
+                if (secondsCompleted >= stopTime && tempStops.size > 1) {
+                    playSound()
+                }
+           }
 
             override fun onFinish() {
                 progressTextView.text = endTime.fullDuration()
@@ -133,8 +139,7 @@ class TimerCountDownActivity: AppCompatActivity() {
         if (seconds < stopTime) {
             return
         }
-        tempStops.removeAt(0)
-        setSoundPlayTime()
+        playSound()
     }
 
     fun setSoundPlayTime() {
@@ -145,5 +150,14 @@ class TimerCountDownActivity: AppCompatActivity() {
 
         val stop = tempStops.first()
         stopTime = stop.time + stopTime
+    }
+
+    fun playSound() {
+        val stop = tempStops.first()
+        tempStops.removeAt(0)
+        setSoundPlayTime()
+        val resId = this.resources.getIdentifier(stop.resource, "raw", this.packageName)
+        mp = MediaPlayer.create(this, resId)
+        mp?.start()
     }
 }
