@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
             android:usesCleartextTraffic="true"
@@ -49,7 +52,14 @@
         <activity android:name=".Activities.Exercises.ExerciseViewActivity">
         </activity>
 
-
+        <activity android:name=".Activities.History.HistoryActivity">
+        </activity>
+        <activity android:name=".Activities.History.HistoryIndexActivity">
+        </activity>
+        <activity android:name=".Activities.History.HistoryPhotoActivity">
+        </activity>
+        <activity android:name=".Activities.History.HistoryPhotoViewActivity">
+        </activity>
         <activity android:name=".Activities.Gallery.GalleryActivity">
         </activity>
         <activity android:name=".Activities.Gallery.VideosActivity">

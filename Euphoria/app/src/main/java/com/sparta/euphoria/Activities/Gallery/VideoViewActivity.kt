@@ -20,6 +20,8 @@ class VideoViewActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_videoview)
+        setTitle("VIDEOS")
+
         mTitleTextView = findViewById(R.id.titleView)
         mVideoNameTextView = findViewById(R.id.videoName)
         mVideoDescriptionTextView = findViewById(R.id.videoDescription)

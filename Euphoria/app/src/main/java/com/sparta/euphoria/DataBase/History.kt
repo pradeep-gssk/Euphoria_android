@@ -17,12 +17,12 @@ data class History (
 
 @Dao
 interface HistoryDao {
-//    @Query("SELECT * FROM HISTORY WHERE IMAGE_TYPE = :imageType")
-//    fun getHistoryForImageType(imageType: String): List<History>
-//
-//    @Insert
-//    fun insert(entity: History)
-//
-//    @Delete
-//    fun delete(entity: History)
+    @Query("SELECT * FROM HISTORY WHERE IMAGE_TYPE = :imageType AND CUSTOMER_ID = :customerId")
+    fun getHistoryForImageType(imageType: String, customerId: Int): List<History>
+
+    @Insert
+    fun insert(entity: History)
+
+    @Delete
+    fun delete(entity: History)
 }
