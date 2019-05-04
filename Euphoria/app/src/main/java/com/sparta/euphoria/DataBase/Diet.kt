@@ -29,7 +29,4 @@ interface DietDao {
 
     @Query("SELECT * FROM DIET WHERE ELEMENT = :element AND DIET = :type")
     fun getDietsForElementAndType(element: String, type: String): List<Diet>
-
-//    @Query("SELECT * FROM DIET WHERE ELEMENT = :element")
-//    fun getDietForElement(element: String): List<Diet>
 }

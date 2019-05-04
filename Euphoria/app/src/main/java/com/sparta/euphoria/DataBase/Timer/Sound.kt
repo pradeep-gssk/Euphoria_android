@@ -19,6 +19,6 @@ interface SoundDao {
     @Insert
     fun insertAll(entity: ArrayList<Sound>)
 
-//    @Query("SELECT * FROM SOUND")
-//    fun getSoundList(): List<Sound>
+    @Query("SELECT * FROM SOUND")
+    fun getSounds(): List<Sound>
 }

@@ -16,9 +16,9 @@ data class Session (
 
 @Dao
 interface SessionDao {
-//    @Query("SELECT * FROM SESSION")
-//    fun getSessions(): List<Session>
-//
-//    @Insert
-//    fun insert(entity: Session): Long
+    @Query("SELECT * FROM SESSION WHERE CUSTOMER_ID = :customerId")
+    fun getSessions(customerId: Int): List<Session>
+
+    @Insert
+    fun insert(entity: Session): Long
 }

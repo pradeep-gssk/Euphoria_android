@@ -25,9 +25,9 @@ data class Stop (
 
 @Dao
 interface StopDao {
-//    @Query("SELECT * FROM STOP WHERE SESSION_ID = :sessionId")
-//    fun getStop(sessionId: Long): List<Stop>
-//
-//    @Insert
-//    fun insertAll(entities: ArrayList<Stop>)
+    @Insert
+    fun insertAll(entities: ArrayList<Stop>)
+
+    @Query("SELECT * FROM STOP WHERE SESSION_ID = :sessionId")
+    fun getStop(sessionId: Long): List<Stop>
 }

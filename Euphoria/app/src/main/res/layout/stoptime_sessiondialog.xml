@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/sessionBg"
+        android:layout_width="300dp"
+        android:layout_height="300dp">
+
+    <NumberPicker
+            android:id="@+id/hours"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:theme="@style/NumberPickerTextColorStyle"
+            android:descendantFocusability="blocksDescendants"
+            app:layout_constraintEnd_toStartOf="@id/minutes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/doneButton">
+    </NumberPicker>
+
+    <TextView
+            android:id="@+id/hoursTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="@id/hours"
+            app:layout_constraintTop_toTopOf="@id/hours"
+            app:layout_constraintBottom_toBottomOf="@id/hours"/>
+
+    <NumberPicker
+            android:id="@+id/minutes"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@android:color/white"
+            android:descendantFocusability="blocksDescendants"
+            android:theme="@style/NumberPickerTextColorStyle"
+            app:layout_constraintStart_toEndOf="@id/hours"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/doneButton">
+    </NumberPicker>
+
+    <TextView
+            android:id="@+id/minutesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="@id/minutes"
+            app:layout_constraintTop_toTopOf="@+id/minutes"
+            app:layout_constraintBottom_toBottomOf="@+id/minutes"/>
+
+
+    <Button
+            android:id="@+id/doneButton"
+            android:text="@string/done"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -12,3 +12,8 @@ interface OnQuestionnaireItemClickListener {
     fun toolBarVisibility(hasFocus: Boolean)
     fun updateDetails(details: String)
 }
+
+interface OnStopClickListener {
+    fun onStopClick(view: View?, position: Int)
+    fun onSoundClick(view: View?, position: Int)
+}

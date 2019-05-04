@@ -1,4 +1,4 @@
-package com.sparta.euphoria.Model
+package com.sparta.euphoria.Generic
 
 import android.content.Context
 import android.support.v7.widget.AppCompatEditText

@@ -28,7 +28,4 @@ interface ExercisesDao {
 
     @Query("SELECT * FROM EXERCISES WHERE ELEMENT = :element AND EXERCISE = :type")
     fun getExercisesForElementAndType(element: String, type: String): List<Exercises>
-
-//    @Query("SELECT * FROM EXERCISES WHERE ELEMENT = :element")
-//    fun getExerciseForElement(element: String): List<Exercises>
 }

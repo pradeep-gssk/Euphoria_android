@@ -87,7 +87,8 @@ class ExerciseIndexActivity: AppCompatActivity() {
             val cellView = convertView ?:
             LayoutInflater.from(context).inflate(R.layout.grid_adapter, parent, false)
             val holder = cellView.tag as? ViewHolder ?: ViewHolder(cellView)
-            cellView.gridImageBg.setImageResource(R.mipmap.photo_red)
+            val resId = context.resources.getIdentifier(exercise.thumbnail, "mipmap", context.packageName)
+            cellView.gridImageBg.setImageResource(resId)
             cellView.tag = holder
             cellView.name.text = exercise.videoName
             return cellView

@@ -8,6 +8,8 @@ import android.content.Context
 import com.sparta.euphoria.DataBase.Questionnaires.*
 import com.sparta.euphoria.DataBase.Timer.*
 import com.sparta.euphoria.Extensions.*
+import com.sparta.euphoria.Model.EUSession
+import com.sparta.euphoria.Model.EUStop
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -203,5 +205,30 @@ abstract class DataBaseHelper: RoomDatabase() {
     fun checkIfUserExist(customerId: Int): Boolean {
         val user = userDao().getUser(customerId)
         return  if (user == null) false else true
+    }
+
+    //Timer
+    fun saveSession(session: EUSession, customerId: Int) {
+        val entity = Session(customerId, session.name, session.timeInterval)
+        val entityId = sessionDao().insert(entity)
+        saveStop(session.stops, entityId)
+    }
+
+    fun saveStop(stops: ArrayList<EUStop>, entityId: Long) {
+
+        val stopEntities = ArrayList<Stop>()
+
+        for (stop in stops) {
+            val sound = stop.sound
+            val stopEntity = Stop(
+                sound?.resource.stringValue(),
+                sound?.name.stringValue(),
+                stop.timeInterval,
+                sound?.type.toString(),
+                entityId)
+            stopEntities.add(stopEntity)
+        }
+
+        stopDao().insertAll(stopEntities)
     }
 }

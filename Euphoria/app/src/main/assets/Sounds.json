@@ -1,225 +1,5 @@
 [
     {
-        "name": "Sound 01",
-        "resource": "Euphoria Sound-01",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 02",
-        "resource": "Euphoria Sound-02",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 03",
-        "resource": "Euphoria Sound-03",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 04",
-        "resource": "Euphoria Sound-04",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 05",
-        "resource": "Euphoria Sound-05",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 06",
-        "resource": "Euphoria Sound-06",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 07",
-        "resource": "Euphoria Sound-07",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 08",
-        "resource": "Euphoria Sound-08",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 09",
-        "resource": "Euphoria Sound-09",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 10",
-        "resource": "Euphoria Sound-10",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 11",
-        "resource": "Euphoria Sound-11",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 12",
-        "resource": "Euphoria Sound-12",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 13",
-        "resource": "Euphoria Sound-13",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 14",
-        "resource": "Euphoria Sound-14",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 15",
-        "resource": "Euphoria Sound-15",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 16",
-        "resource": "Euphoria Sound-16",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 17",
-        "resource": "Euphoria Sound-17",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 18",
-        "resource": "Euphoria Sound-18",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 19",
-        "resource": "Euphoria Sound-19",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 20",
-        "resource": "Euphoria Sound-20",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 21",
-        "resource": "Euphoria Sound-21",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 22",
-        "resource": "Euphoria Sound-22",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 23",
-        "resource": "Euphoria Sound-23",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 24",
-        "resource": "Euphoria Sound-24",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 25",
-        "resource": "Euphoria Sound-25",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 26",
-        "resource": "Euphoria Sound-26",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 27",
-        "resource": "Euphoria Sound-27",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 28",
-        "resource": "Euphoria Sound-28",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 29",
-        "resource": "Euphoria Sound-29",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 30",
-        "resource": "Euphoria Sound-30",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 31",
-        "resource": "Euphoria Sound-31",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 32",
-        "resource": "Euphoria Sound-32",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 33",
-        "resource": "Euphoria Sound-33",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 34",
-        "resource": "Euphoria Sound-34",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 35",
-        "resource": "Euphoria Sound-35",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 36",
-        "resource": "Euphoria Sound-36",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 37",
-        "resource": "Euphoria Sound-37",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 38",
-        "resource": "Euphoria Sound-38",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 39",
-        "resource": "Euphoria Sound-39",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 40",
-        "resource": "Euphoria Sound-40",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 41",
-        "resource": "Euphoria Sound-41",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 42",
-        "resource": "Euphoria Sound-42",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 43",
-        "resource": "Euphoria Sound-43",
-        "type": "wav"
-    },
-    {
-        "name": "Sound 44",
-        "resource": "Euphoria Sound-44",
-        "type": "wav"
-    },
-    {
         "name": "Bell-01",
         "resource": "Bell-01",
         "type": "wav"
@@ -272,6 +52,226 @@
     {
         "name": "Bell-11",
         "resource": "Bell-11",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 01",
+        "resource": "Sound-01",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 02",
+        "resource": "Sound-02",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 03",
+        "resource": "Sound-03",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 04",
+        "resource": "Sound-04",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 05",
+        "resource": "Sound-05",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 06",
+        "resource": "Sound-06",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 07",
+        "resource": "Sound-07",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 08",
+        "resource": "Sound-08",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 09",
+        "resource": "Sound-09",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 10",
+        "resource": "Sound-10",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 11",
+        "resource": "Sound-11",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 12",
+        "resource": "Sound-12",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 13",
+        "resource": "Sound-13",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 14",
+        "resource": "Sound-14",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 15",
+        "resource": "Sound-15",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 16",
+        "resource": "Sound-16",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 17",
+        "resource": "Sound-17",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 18",
+        "resource": "Sound-18",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 19",
+        "resource": "Sound-19",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 20",
+        "resource": "Sound-20",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 21",
+        "resource": "Sound-21",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 22",
+        "resource": "Sound-22",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 23",
+        "resource": "Sound-23",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 24",
+        "resource": "Sound-24",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 25",
+        "resource": "Sound-25",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 26",
+        "resource": "Sound-26",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 27",
+        "resource": "Sound-27",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 28",
+        "resource": "Sound-28",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 29",
+        "resource": "Sound-29",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 30",
+        "resource": "Sound-30",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 31",
+        "resource": "Sound-31",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 32",
+        "resource": "Sound-32",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 33",
+        "resource": "Sound-33",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 34",
+        "resource": "Sound-34",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 35",
+        "resource": "Sound-35",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 36",
+        "resource": "Sound-36",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 37",
+        "resource": "Sound-37",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 38",
+        "resource": "Sound-38",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 39",
+        "resource": "Sound-39",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 40",
+        "resource": "Sound-40",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 41",
+        "resource": "Sound-41",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 42",
+        "resource": "Sound-42",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 43",
+        "resource": "Sound-43",
+        "type": "wav"
+    },
+    {
+        "name": "Sound 44",
+        "resource": "Sound-44",
         "type": "wav"
     }
 ]
