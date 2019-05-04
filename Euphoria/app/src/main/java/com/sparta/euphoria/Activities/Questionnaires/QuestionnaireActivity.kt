@@ -194,6 +194,7 @@ class QuestionnaireActivity: AppCompatActivity() {
                 optionAdapter?.answer = question.answer
                 optionAdapter?.detail = question.details
                 optionAdapter?.notifyDataSetChanged()
+                checkIfAllAnswered()
             }
 
             optionAdapter?.setOnQuestionnaireItemClickListener(object : OnQuestionnaireItemClickListener {
@@ -261,6 +262,30 @@ class QuestionnaireActivity: AppCompatActivity() {
             DataBaseHelper.getDatabase(applicationContext).questionnaireDao().updateDetail(details, question.uid)
             question.details = details
         }.start()
+    }
+
+    fun checkIfAllAnswered() {
+        Thread {
+            val customerId = EUUser.shared(this).customerId
+             if (DataBaseHelper.getDatabase(this).checkIfAllAnswered(questionnaires.index, customerId)) {
+                 when(questionnaires.index) {
+                     1 -> showElementAlert()
+                     else -> {
+                         if (allQuestionsAnswered == false) {
+                             //TODO: Show completing alert
+                         }
+                     }
+                 }
+             }
+        }.start()
+    }
+
+    fun showElementAlert() {
+        val currentElement = findElement(this, questionnaires.uid)
+        if (selectedElement != null && selectedElement != currentElement) {
+            selectedElement = currentElement
+            //TODO: Show element alert
+        }
     }
 
     private class QuestionnaireAdapter(var list: List<Section>,

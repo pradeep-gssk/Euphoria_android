@@ -10,5 +10,6 @@
     <color name="titleColor">#584040</color>
     <color name="toolbar">#F3EFEA</color>
     <color name="defaultTextColor">#4A4A4A</color>
-
+    <color name="sectionHeader">#979797</color>
+    <color name="videoBgRed">#B54943</color>
 </resources>

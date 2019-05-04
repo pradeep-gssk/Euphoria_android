@@ -62,12 +62,13 @@ abstract class DataBaseHelper: RoomDatabase() {
         addQuestionnaires("Questionnaire3.json".getJson(application), 3, customerId)
         addQuestionnaires("Questionnaire4.json".getJson(application), 4, customerId)
         addQuestionnaires("Questionnaire5.json".getJson(application), 5, customerId)
+        addDiet("Diet.json".getJsonArray(application))
         addExercises("Exercises.json".getJsonArray(application))
         addSounds("Sounds.json".getJsonArray(application))
         addVideos("Videos.json".getJsonArray(application))
-        addDiet("Diet.json".getJsonArray(application))
     }
 
+    //Questionnaires
     private fun addQuestionnaires(jsonObject: JSONObject, index: Int, customerId: Int) {
         val array = jsonObject.getJSONArray("questionnaire")
         val questionnaires = Questionnaires(customerId, index, 0, jsonObject.stringValue("title"), array.length())
@@ -110,11 +111,7 @@ abstract class DataBaseHelper: RoomDatabase() {
 
     fun checkIfAllAnswered(index: Int, customerId: Int): Boolean {
         val questionnairesObject = questionnairesDao().getQuestionnaire(index, customerId)
-        println(questionnairesObject)
-        println(questionnairesObject.uid)
         val questionnaireList = questionnaireDao().getAnsweredQuestionnaireList(questionnairesObject.uid)
-        println(questionnaireList)
-        println(questionnaireList.size)
         return if (questionnaireList.size > 0) false else true
     }
 
@@ -127,28 +124,84 @@ abstract class DataBaseHelper: RoomDatabase() {
         //TODO: clear answers
     }
 
-    private fun addExercises(jsonArray: JSONArray) {
-    }
-
-    private fun addSounds(jsonArray: JSONArray) {
-    }
-
-    private fun addVideos(jsonArray: JSONArray) {
-    }
-
+    //Diet
     private fun addDiet(jsonArray: JSONArray) {
+        val diets = ArrayList<Diet>()
+        for (i in 0..(jsonArray.length() - 1)) {
+            val dietObject = jsonArray.getJSONObject(i)
+            val diet = Diet(
+                dietObject.stringValue("channels"),
+                dietObject.stringValue("diet"),
+                dietObject.stringValue("effect"),
+                dietObject.stringValue("element"),
+                dietObject.stringValue("flavour"),
+                dietObject.stringValue("name"),
+                dietObject.stringValue("nature"),
+                dietObject.stringValue("organ")
+            )
+            diets.add(diet)
+        }
+        dietDao().insertAll(diets)
+    }
+
+    //Exercises
+    private fun addExercises(jsonArray: JSONArray) {
+        val exercises = ArrayList<Exercises>()
+        for (i in 0..(jsonArray.length() - 1)) {
+            val exerciseObject = jsonArray.getJSONObject(i)
+            val exercise = Exercises(
+                exerciseObject.stringValue("element"),
+                exerciseObject.stringValue("exercise"),
+                exerciseObject.stringValue("thumbnail"),
+                exerciseObject.stringValue("video_description"),
+                exerciseObject.stringValue("video_name"),
+                exerciseObject.stringValue("video_path")
+            )
+            exercises.add(exercise)
+        }
+        exercisesDao().insertAll(exercises)
+    }
+
+    //Sounds
+    private fun addSounds(jsonArray: JSONArray) {
+        val sounds = ArrayList<Sound>()
+        for (i in 0..(jsonArray.length() - 1)) {
+            val soundObject = jsonArray.getJSONObject(i)
+            val sound = Sound(
+                soundObject.stringValue("name"),
+                soundObject.stringValue("resource"),
+                soundObject.stringValue("type")
+            )
+            sounds.add(sound)
+        }
+        soundDao().insertAll(sounds)
+    }
+
+    //Videos
+    private fun addVideos(jsonArray: JSONArray) {
+        val videosList = ArrayList<Video>()
+        for (i in 0..(jsonArray.length() - 1)) {
+            val videosObject = jsonArray.getJSONObject(i)
+            val video = Video(
+                videosObject.stringValue("thumbnail"),
+                videosObject.stringValue("title"),
+                videosObject.stringValue("video_description"),
+                videosObject.stringValue("video_name"),
+                videosObject.stringValue("video_path")
+            )
+            videosList.add(video)
+        }
+        videoDao().insertAll(videosList)
     }
 
     //User
     fun saveUser(customerId: Int) {
-        println("Save User")
         val user = User(customerId)
         userDao().insert(user)
     }
 
     fun checkIfUserExist(customerId: Int): Boolean {
         val user = userDao().getUser(customerId)
-        println("came here")
         return  if (user == null) false else true
     }
 }

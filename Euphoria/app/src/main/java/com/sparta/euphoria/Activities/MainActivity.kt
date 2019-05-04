@@ -65,7 +65,6 @@ class MainActivity : AppCompatActivity() {
         val customerId = EUUser.shared(this).customerId
         Thread() {
             val result = DataBaseHelper.getDatabase(this).checkIfUserExist(customerId)
-            println(result)
             if (result == true) return@Thread
             DataBaseHelper.getDatabase(this).saveUser(customerId)
             preloadData(customerId)

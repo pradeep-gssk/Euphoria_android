@@ -21,15 +21,15 @@ data class Diet (
 
 @Dao
 interface DietDao {
-//    @Query("SELECT * FROM DIET WHERE ELEMENT = :element AND DIET = :type")
-//    fun getDietsForElementAndType(element: String, type: String): List<Diet>
-//
+    @Insert
+    fun insertAll(entity: ArrayList<Diet>)
+
+    @Query("SELECT DISTINCT DIET FROM DIET WHERE ELEMENT = :element")
+    fun getUniqueDietsForElement(element: String): List<String>
+
+    @Query("SELECT * FROM DIET WHERE ELEMENT = :element AND DIET = :type")
+    fun getDietsForElementAndType(element: String, type: String): List<Diet>
+
 //    @Query("SELECT * FROM DIET WHERE ELEMENT = :element")
 //    fun getDietForElement(element: String): List<Diet>
-//
-//    @Query("SELECT DISTINCT DIET FROM DIET WHERE ELEMENT = :element")
-//    fun getUniqueDietsForElement(element: String): List<String>
-//
-//    @Insert
-//    fun insertAll(entity: ArrayList<Diet>)
 }

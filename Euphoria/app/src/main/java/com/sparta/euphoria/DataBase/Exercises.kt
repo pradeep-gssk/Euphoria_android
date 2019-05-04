@@ -20,15 +20,15 @@ data class Exercises (
 
 @Dao
 interface ExercisesDao {
-//    @Query("SELECT * FROM EXERCISES WHERE ELEMENT = :element AND EXERCISE = :type")
-//    fun getExercisesForElementAndType(element: String, type: String): List<Exercises>
-//
+    @Insert
+    fun insertAll(entity: ArrayList<Exercises>)
+
+    @Query("SELECT DISTINCT EXERCISE FROM EXERCISES WHERE ELEMENT = :element")
+    fun getUniqueExercisesForElement(element: String): List<String>
+
+    @Query("SELECT * FROM EXERCISES WHERE ELEMENT = :element AND EXERCISE = :type")
+    fun getExercisesForElementAndType(element: String, type: String): List<Exercises>
+
 //    @Query("SELECT * FROM EXERCISES WHERE ELEMENT = :element")
 //    fun getExerciseForElement(element: String): List<Exercises>
-//
-//    @Query("SELECT DISTINCT EXERCISE FROM EXERCISES WHERE ELEMENT = :element")
-//    fun getUniqueExercisesForElement(element: String): List<String>
-//
-//    @Insert
-//    fun insertAll(entity: ArrayList<Exercises>)
 }

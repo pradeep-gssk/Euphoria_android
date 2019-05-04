@@ -18,12 +18,12 @@ data class Video (
 
 @Dao
 interface VideoDao {
+    @Insert
+    fun insertAll(entity: ArrayList<Video>)
+
 //    @Query("SELECT DISTINCT TITLE FROM VIDEO")
 //    fun getUniqueVideoTitle(): List<String>
 //
 //    @Query("SELECT * FROM VIDEO WHERE TITLE = :title")
 //    fun getVideosForTitle(title: String): List<Video>
-//
-//    @Insert
-//    fun insertAll(entity: ArrayList<Video>)
 }

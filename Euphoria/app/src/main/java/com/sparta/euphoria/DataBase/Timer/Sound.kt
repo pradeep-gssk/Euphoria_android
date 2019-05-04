@@ -16,9 +16,9 @@ data class Sound (
 
 @Dao
 interface SoundDao {
+    @Insert
+    fun insertAll(entity: ArrayList<Sound>)
+
 //    @Query("SELECT * FROM SOUND")
 //    fun getSoundList(): List<Sound>
-//
-//    @Insert
-//    fun insertAll(entity: ArrayList<Sound>)
 }

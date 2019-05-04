@@ -1,7 +1,6 @@
-package com.sparta.euphoria.Activities
+package com.sparta.euphoria.Activities.Exercises
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
@@ -14,77 +13,71 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.sparta.euphoria.DataBase.DataBaseHelper
 import com.sparta.euphoria.Enums.Element
-import com.sparta.euphoria.Enums.HomeType
+import com.sparta.euphoria.Enums.ExerciseType
 import com.sparta.euphoria.Extensions.findElement
 import com.sparta.euphoria.Generic.OnItemClickListener
 import com.sparta.euphoria.Model.EUUser
 import com.sparta.euphoria.R
+import java.io.Serializable
 
-class HomeActivity : AppCompatActivity() {
-
+class ExerciseActivity: AppCompatActivity() {
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var recyclerView: RecyclerView
-    private var homeAdapter: HomeAdapter? = null
-    private var questionnaire1Answered = false
+    private var exerciseAdapter: ExerciseAdapter? = null
 
-    val items: Array<HomeType> by lazy {
-        return@lazy HomeType.values()
-    }
+    var items: List<String> = emptyList()
+    var selectedElement: Element = Element.Earth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview)
-        setTitle("HOME")
+        setTitle("EXERCISES")
+
         recyclerView = findViewById(R.id.recycleView)
         linearLayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = linearLayoutManager
-
         val dividerItemDecoration = DividerItemDecoration(recyclerView.context, 1)
         recyclerView.addItemDecoration(dividerItemDecoration)
+
+        Thread() {
+            val customerId = EUUser.shared(this).customerId
+            val questionnaires = DataBaseHelper.getDatabase(this).questionnairesDao().getQuestionnaire(1, customerId)
+            selectedElement = findElement(this, questionnaires.uid)
+            items = DataBaseHelper.getDatabase(applicationContext).exercisesDao().getUniqueExercisesForElement(selectedElement.element)
+            updateViews()
+        }.start()
     }
 
-    override fun onResume() {
-        super.onResume()
-        getSelectedElement()
-    }
-
-    private fun loadAdapter() {
+    fun updateViews() {
         runOnUiThread {
-            if (homeAdapter == null) {
-                homeAdapter = HomeAdapter(items, questionnaire1Answered)
-                recyclerView.adapter = homeAdapter
+            if (exerciseAdapter == null) {
+                exerciseAdapter = ExerciseAdapter(items)
+                recyclerView.adapter = exerciseAdapter
 
-                homeAdapter?.setOnItemClickListener(object : OnItemClickListener {
+                exerciseAdapter?.setOnItemClickListener(object : OnItemClickListener {
                     override fun onItemClick(view: View?, position: Int) {
                         gotoNextActivity(position)
                     }
                 })
             }
-            else {
-                homeAdapter?.questionnaire1Answered = questionnaire1Answered
-                homeAdapter?.notifyDataSetChanged()
-            }
         }
     }
 
-    private fun getSelectedElement() {
-        val customerId = EUUser.shared(this).customerId
-        Thread() {
-            val questionnaires = DataBaseHelper.getDatabase(this).questionnairesDao().getQuestionnaire(1, customerId)
-            questionnaire1Answered = DataBaseHelper.getDatabase(this).checkIfAllAnswered(1, customerId)
-            loadAdapter()
-        }.start()
-    }
-
     fun gotoNextActivity(position: Int) {
-        val item = items[position]
         runOnUiThread {
-            val intent = Intent(this, item.cls)
+            val item = items[position]
+            val bundle = Bundle()
+            bundle.putSerializable("exercise", item as Serializable)
+            bundle.putSerializable("element", selectedElement as Serializable)
+
+            val intent = Intent(this, ExerciseIndexActivity::class.java)
+            intent.putExtra("bundle", bundle)
             startActivity(intent)
         }
     }
 
-    private class HomeAdapter(private val list: Array<HomeType>, var questionnaire1Answered: Boolean) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+    private class ExerciseAdapter(private val list: List<String>): RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
+
         class ViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
             RecyclerView.ViewHolder(inflater.inflate(R.layout.recycleview_adapter, parent, false)) {
 
@@ -100,11 +93,11 @@ class HomeActivity : AppCompatActivity() {
                 mAccessoryImage = itemView.findViewById(R.id.accessoryImage)
             }
 
-            fun bind(homeType: HomeType) {
-                mCharacterImage?.setImageResource(homeType.characterImage)
-                mCharacterTextView?.text = homeType.character
-                mTitleTextView?.text = homeType.title
-                mAccessoryImage?.setImageResource(homeType.accessoryImage)
+            fun bind(exercise: ExerciseType) {
+                mCharacterImage?.setImageResource(R.mipmap.oval_red)
+                mCharacterTextView?.text = exercise.character
+                mTitleTextView?.text = exercise.title
+                mAccessoryImage?.setImageResource(R.mipmap.rectangle_red)
             }
         }
 
@@ -124,27 +117,12 @@ class HomeActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-            p0.bind(list[p1])
-
-            if (p1 == 1 || p1 == 2) {
-                if (questionnaire1Answered == false) {
-                    p0.itemView.alpha = 0.6F
-                    p0.itemView.setBackgroundColor(Color.parseColor("#c7c8ca"))
-                }
-                else {
-                    p0.itemView.alpha = 1.0F
-                    p0.itemView.setBackgroundColor(Color.TRANSPARENT)
-                }
-            }
-            else {
-                p0.itemView.alpha = 1.0F
-                p0.itemView.setBackgroundColor(Color.TRANSPARENT)
+            val item = ExerciseType.getExerciseType(list[p1])
+            if (item != null) {
+                p0.bind(item)
             }
 
             p0.itemView.setOnClickListener { v: View? ->
-                if ((p1 == 1 || p1 == 2) && questionnaire1Answered == false) {
-                    return@setOnClickListener
-                }
                 listener.onItemClick(v, p1)
             }
         }

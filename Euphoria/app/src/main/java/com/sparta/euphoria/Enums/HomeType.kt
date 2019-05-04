@@ -1,7 +1,8 @@
 package com.sparta.euphoria.Enums
 
 import android.support.v7.app.AppCompatActivity
-import com.sparta.euphoria.Activities.HomeActivity
+import com.sparta.euphoria.Activities.Diet.DietActivity
+import com.sparta.euphoria.Activities.Exercises.ExerciseActivity
 import com.sparta.euphoria.Activities.Questionnaires.QuestionnairesActivity
 import com.sparta.euphoria.R
 
@@ -24,7 +25,7 @@ enum class HomeType(val title: String,
         "D",
         R.mipmap.oval_green,
         R.mipmap.rectangle_green,
-        QuestionnairesActivity::class.java as Class<AppCompatActivity>
+        DietActivity::class.java as Class<AppCompatActivity>
     ),
 
     Exercises(
@@ -32,7 +33,7 @@ enum class HomeType(val title: String,
         "E",
         R.mipmap.oval_red,
         R.mipmap.rectangle_red,
-        QuestionnairesActivity::class.java as Class<AppCompatActivity>
+        ExerciseActivity::class.java as Class<AppCompatActivity>
     ),
 
     Activities(
