@@ -39,6 +39,8 @@
         </activity>
         <activity android:name=".Activities.Questionnaires.QuestionnaireActivity">
         </activity>
+        <activity android:name=".Activities.Questionnaires.QuestionnairesAllActivity">
+        </activity>
         <activity android:name=".Activities.Diet.DietActivity">
         </activity>
         <activity android:name=".Activities.Diet.DietIndexActivity">

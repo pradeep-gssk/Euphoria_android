@@ -10,6 +10,7 @@ import com.sparta.euphoria.DataBase.Timer.*
 import com.sparta.euphoria.Extensions.*
 import com.sparta.euphoria.Model.EUSession
 import com.sparta.euphoria.Model.EUStop
+import com.sparta.euphoria.Model.Section
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -163,6 +164,29 @@ abstract class DataBaseHelper: RoomDatabase() {
 
         val joined = array.joinToString(separator = "\n")
         return joined
+    }
+
+    fun fetchAnsweredQuestionnairesList(customerId: Int): ArrayList<Section> {
+        val questionnairesList = questionnairesDao().getQuestionnaires(customerId)
+        val sections = ArrayList<Section>()
+        var currentIndex = 0
+
+        for (questionnaires in questionnairesList) {
+            val questionnaireList = questionnaireDao().getAnsweredQuestionnaireList(questionnaires.uid)
+            val title = questionnaires.title
+            if (questionnaireList.size > 0 && title != null) {
+                val section = Section(currentIndex, 0, title, true)
+                sections.add(section)
+                currentIndex += 1
+                for (i in 0..(questionnaireList.size - 1)) {
+                    val questionnaire = questionnaireList[i]
+                    val row = Section(questionnaire, currentIndex, i, false)
+                    sections.add(row)
+                }
+            }
+        }
+
+        return sections
     }
 
     fun clearAllAnswers(customerId: Int) {

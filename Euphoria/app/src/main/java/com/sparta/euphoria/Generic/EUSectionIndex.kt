@@ -46,7 +46,7 @@ class EUSectionIndex: View {
         recyclerView = _recyclerView
         val _selectionIndexer = _recyclerView.adapter as SectionIndexer
         sortedKeys = _selectionIndexer.sections
-        selectionIndexer = selectionIndexer
+        selectionIndexer = _selectionIndexer
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
@@ -73,8 +73,8 @@ class EUSectionIndex: View {
     }
 
     override fun draw(canvas: Canvas?) {
-        var canvasHeight = padding/sortedKeys.size.toFloat()
-        var charHeight = (padding - canvasHeight)/sortedKeys.size.toFloat()
+        val canvasHeight = padding/sortedKeys.size.toFloat()
+        val charHeight = (padding - canvasHeight)/sortedKeys.size.toFloat()
         val widthCenter = measuredWidth.toFloat()/2.toFloat()
         for (i in 0..(sortedKeys.size - 1)) {
             canvas?.drawText((sortedKeys[i] as String), widthCenter, charHeight + (i * charHeight), paint)

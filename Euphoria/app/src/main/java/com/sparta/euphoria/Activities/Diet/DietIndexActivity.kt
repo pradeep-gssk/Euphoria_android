@@ -64,12 +64,12 @@ class DietIndexActivity: AppCompatActivity() {
     }
 
     fun createMapping(diets: List<Diet>) {
-        var mapping = HashMap<String, ArrayList<Diet>>()
+        val mapping = HashMap<String, ArrayList<Diet>>()
 
         for (diet in diets) {
             val name = diet.name
             val key = if (name != null) name.take(1) else "#"
-            var data = mapping[key]
+            val data = mapping[key]
 
             if (data != null) {
                 data.add(diet)
@@ -85,7 +85,7 @@ class DietIndexActivity: AppCompatActivity() {
 
     fun createSections(mapping: HashMap<String, ArrayList<Diet>>) {
         val sections = ArrayList<Section>()
-        var positions = ArrayList<Int>()
+        val positions = ArrayList<Int>()
         val keys = mapping.keys.sorted()
 
         for (i in 0..(keys.size - 1)) {

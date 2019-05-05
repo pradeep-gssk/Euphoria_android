@@ -71,7 +71,8 @@ class QuestionnairesActivity : AppCompatActivity() {
                 }
 
                 R.id.text -> {
-                    println("text")
+                    val intent = Intent(this, QuestionnairesAllActivity::class.java)
+                    startActivity(intent)
                 }
             }
             return@setOnActionSelectedListener false
