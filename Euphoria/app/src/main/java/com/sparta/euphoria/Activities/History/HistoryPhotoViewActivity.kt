@@ -32,7 +32,7 @@ class HistoryPhotoViewActivity: AppCompatActivity() {
         }
 
     private var mTitleTextView: TextView? = null
-    private var mEmailButton: Button? = null
+    private var mEmailButton: ImageButton? = null
     private var mDeleteButton: ImageButton? = null
     private var mPhotoView: ImageView? = null
     private var mCameraButton: ImageButton? = null
@@ -41,17 +41,15 @@ class HistoryPhotoViewActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_historyphoto)
+        setContentView(R.layout.activity_historyphotoview)
         setTitle("HISTORY")
 
         mTitleTextView = findViewById(R.id.titleTextView)
-        mEmailButton = findViewById(R.id.saveButton)
+        mEmailButton = findViewById(R.id.emailButton)
         mDeleteButton = findViewById(R.id.delete)
         mPhotoView = findViewById(R.id.photoView)
         mCameraButton = findViewById(R.id.cameraButton)
         mCameraButton?.visibility = View.INVISIBLE
-        mEmailButton?.setBackgroundResource(R.mipmap.envelope_blue)
-        mEmailButton?.text = ""
         mPhotoView?.setImageResource(R.mipmap.ic_launcher)
         mTitleTextView?.textSize = 15.toFloat()
 
@@ -111,7 +109,7 @@ class HistoryPhotoViewActivity: AppCompatActivity() {
         return File(getDirectory(), fileName)
     }
 
-    fun didClickButton(view: View) {
+    fun didClickEmailButton(view: View) {
         val entity = history?.history
         if (externalStoragePermissionEnabled && entity is History) {
             val intent = Intent(Intent.ACTION_SENDTO)

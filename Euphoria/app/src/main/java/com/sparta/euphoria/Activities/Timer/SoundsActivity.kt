@@ -143,6 +143,7 @@ class SoundsActivity: AppCompatActivity() {
 
         init {
             mImageView = itemView.findViewById(R.id.startImageview)
+            mImageView?.scaleType = ImageView.ScaleType.CENTER
             mTitleTextView = itemView.findViewById(R.id.startTitleTextView)
             itemView.findViewById<TextView>(R.id.startTimeTextView).visibility = View.GONE
         }

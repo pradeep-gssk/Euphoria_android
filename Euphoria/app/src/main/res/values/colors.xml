@@ -16,4 +16,5 @@
     <color name="sessionBg">#968A87</color>
     <color name="divider">#55000000</color>
     <color name="timer">#92382f</color>
+    <color name="border">#c5c4c0</color>
 </resources>
