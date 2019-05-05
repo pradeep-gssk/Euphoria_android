@@ -87,6 +87,8 @@
         </activity>
         <activity android:name=".Activities.Timer.TimerCountDownActivity">
         </activity>
+        <activity android:name=".Activities.AccountActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -46,4 +46,7 @@
     <string name="stop">Stop</string>
     <string name="delete">delete</string>
     <string name="photo">photo</string>
+    <string name="signout">Signout</string>
+    <string name="account">my Account</string>
+    <string name="profile">Profile</string>
 </resources>

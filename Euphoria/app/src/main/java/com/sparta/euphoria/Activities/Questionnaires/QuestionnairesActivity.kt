@@ -1,13 +1,8 @@
 package com.sparta.euphoria.Activities.Questionnaires
 
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.support.v4.content.ContextCompat
-import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
@@ -21,7 +16,6 @@ import android.widget.TextView
 import com.leinardi.android.speeddial.SpeedDialActionItem
 import com.leinardi.android.speeddial.SpeedDialView
 import com.sparta.euphoria.DataBase.DataBaseHelper
-import com.sparta.euphoria.DataBase.Questionnaires.Questionnaire
 import com.sparta.euphoria.DataBase.Questionnaires.Questionnaires
 import com.sparta.euphoria.Generic.Constants
 import com.sparta.euphoria.Generic.OnItemClickListener
