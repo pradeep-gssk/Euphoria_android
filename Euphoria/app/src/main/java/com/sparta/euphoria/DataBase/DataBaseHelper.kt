@@ -124,7 +124,6 @@ abstract class DataBaseHelper: RoomDatabase() {
 
     fun fetchAnsweredQuestionnaires(customerId: Int): String {
         val questionnairesList = questionnairesDao().getQuestionnaires(customerId)
-//        va results: List<Questionnaire> = emptyList()
         val array = arrayListOf<String>()
         var currentIndex = 0
         var questionIndex = 1
@@ -167,7 +166,10 @@ abstract class DataBaseHelper: RoomDatabase() {
     }
 
     fun clearAllAnswers(customerId: Int) {
-        //TODO: clear answers
+        val questionnairesList = questionnairesDao().getQuestionnaires(customerId)
+        for (questionnaires in questionnairesList) {
+            questionnaireDao().clearAnswers(questionnaires.uid)
+        }
     }
 
     //Diet

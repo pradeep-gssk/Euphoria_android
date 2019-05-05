@@ -46,7 +46,9 @@ interface QuestionnaireDao {
     @Query("UPDATE QUESTIONNAIRE SET DETAILS = :detail WHERE UID = :uid")
     fun updateDetail(detail: String?, uid: Long)
 
-    @Query("SELECT * FROM QUESTIONNAIRE WHERE ((((OPTION_TYPE = 0) OR (OPTION_TYPE = 1)) AND (ANSWER is not null)) OR ((OPTION_TYPE = 2) AND (ANSWER is not null) AND (DETAILS is not null))) AND (QUESTIONNAIRES_ID = :questionnairesId)")
+    @Query("SELECT * FROM QUESTIONNAIRE WHERE ((((OPTION_TYPE = 0) OR (OPTION_TYPE = 1)) AND (ANSWER is not null)) OR ((OPTION_TYPE = 2) AND ((ANSWER is not null) OR (DETAILS is not null)))) AND (QUESTIONNAIRES_ID = :questionnairesId)")
     fun getAnsweredQuestionnaireList(questionnairesId: Long): List<Questionnaire>
 
+    @Query("UPDATE QUESTIONNAIRE SET ANSWER = null, DETAILS = null WHERE QUESTIONNAIRES_ID = :questionnairesId")
+    fun clearAnswers(questionnairesId: Long)
 }

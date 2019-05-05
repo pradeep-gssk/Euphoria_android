@@ -27,15 +27,10 @@ import com.sparta.euphoria.Generic.Constants
 import com.sparta.euphoria.Generic.OnItemClickListener
 import com.sparta.euphoria.Model.EUUser
 import com.sparta.euphoria.R
+import java.io.File
 import java.io.Serializable
 
 class QuestionnairesActivity : AppCompatActivity() {
-
-    var externalStoragePermissionEnabled: Boolean = false
-        get() {
-            return (ContextCompat.checkSelfPermission(this,
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
-        }
 
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var recyclerView: RecyclerView
@@ -60,17 +55,19 @@ class QuestionnairesActivity : AppCompatActivity() {
         )
 
         speedDial?.setOnActionSelectedListener {item ->
+            val customerId = EUUser.shared(this).customerId
             when(item.id) {
                 R.id.email -> {
                     Thread {
-                        val customerId = EUUser.shared(this).customerId
                         val joined = DataBaseHelper.getDatabase(this).fetchAnsweredQuestionnaires(customerId)
                         didTapEmail(joined)
                     }.start()
                 }
 
                 R.id.refresh -> {
-                    println("two")
+                    Thread {
+                        DataBaseHelper.getDatabase(this).clearAllAnswers(customerId)
+                    }.start()
                 }
 
                 R.id.text -> {
@@ -124,14 +121,18 @@ class QuestionnairesActivity : AppCompatActivity() {
 
     fun didTapEmail(text: String) {
         runOnUiThread {
-            if (externalStoragePermissionEnabled) {
+            if (text.isNotEmpty()) {
                 val intent = Intent(Intent.ACTION_SENDTO)
                 val recipient = "mailto:" + Constants.EMAIL_RECIPIENT
                 intent.data = Uri.parse(recipient)
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Questionnaires")
                 intent.putExtra(Intent.EXTRA_TEXT, "Questions and Answers")
-//                val bytes = text.toByteArray(Charsets.UTF_8)
-//                intent.putExtra(Intent.EXTRA_STREAM, bytes)
+
+                val outputDir = applicationContext.externalCacheDir
+                val outputFile = File.createTempFile("Questionnaires", ".txt", outputDir)
+                outputFile.writeText(text)
+                val path = Uri.fromFile(outputFile)
+                intent.putExtra(Intent.EXTRA_STREAM, path)
 
                 if (intent.resolveActivity(this.packageManager) != null) {
                     startActivity(intent)
