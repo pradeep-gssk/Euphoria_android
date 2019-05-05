@@ -113,13 +113,57 @@ abstract class DataBaseHelper: RoomDatabase() {
 
     fun checkIfAllAnswered(index: Int, customerId: Int): Boolean {
         val questionnairesObject = questionnairesDao().getQuestionnaire(index, customerId)
-        val questionnaireList = questionnaireDao().getAnsweredQuestionnaireList(questionnairesObject.uid)
+        val questionnaireList = questionnaireDao().getUnAnsweredQuestionnaireList(questionnairesObject.uid)
         return if (questionnaireList.size > 0) false else true
     }
 
     fun getElementCount(element: String, questionnaireId: Long) : Int {
         val questionnaireList = questionnaireDao().getQuestionnaireForElement("Yes", element, questionnaireId)
         return if (questionnaireList.isEmpty()) 0 else questionnaireList.size
+    }
+
+    fun fetchAnsweredQuestionnaires(customerId: Int): String {
+        val questionnairesList = questionnairesDao().getQuestionnaires(customerId)
+//        va results: List<Questionnaire> = emptyList()
+        val array = arrayListOf<String>()
+        var currentIndex = 0
+        var questionIndex = 1
+        for (questionnaires in questionnairesList) {
+            val questionnaireList = questionnaireDao().getAnsweredQuestionnaireList(questionnaires.uid)
+            val title = questionnaires.title
+            if (questionnaireList.size > 0 && title != null) {
+                questionIndex = 1
+                if (currentIndex > 0) {
+                    array.add("\n\n" + title)
+                }
+                else {
+                    array.add(title)
+                }
+
+                currentIndex += 1
+
+                for (questionnaire in questionnaireList) {
+                    val question = questionnaire.question
+                    if (question != null) {
+                        array.add("$questionIndex. " + question)
+                    }
+
+                    val answer = questionnaire.answer
+                    if (answer != null) {
+                        array.add("Answer: " + answer)
+                    }
+
+                    val detail = questionnaire.details
+                    if (detail != null) {
+                        array.add("Details: " + detail)
+                    }
+                    questionIndex += 1
+                }
+            }
+        }
+
+        val joined = array.joinToString(separator = "\n")
+        return joined
     }
 
     fun clearAllAnswers(customerId: Int) {

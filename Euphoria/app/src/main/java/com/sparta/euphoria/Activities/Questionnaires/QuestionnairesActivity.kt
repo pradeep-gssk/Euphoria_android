@@ -1,8 +1,13 @@
 package com.sparta.euphoria.Activities.Questionnaires
 
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.content.res.ColorStateList
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
+import android.support.v4.content.ContextCompat
+import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
@@ -13,8 +18,12 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.leinardi.android.speeddial.SpeedDialActionItem
+import com.leinardi.android.speeddial.SpeedDialView
 import com.sparta.euphoria.DataBase.DataBaseHelper
+import com.sparta.euphoria.DataBase.Questionnaires.Questionnaire
 import com.sparta.euphoria.DataBase.Questionnaires.Questionnaires
+import com.sparta.euphoria.Generic.Constants
 import com.sparta.euphoria.Generic.OnItemClickListener
 import com.sparta.euphoria.Model.EUUser
 import com.sparta.euphoria.R
@@ -22,10 +31,16 @@ import java.io.Serializable
 
 class QuestionnairesActivity : AppCompatActivity() {
 
+    var externalStoragePermissionEnabled: Boolean = false
+        get() {
+            return (ContextCompat.checkSelfPermission(this,
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+        }
+
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var recyclerView: RecyclerView
     private var questionnairesAdapter: QuestionnaireAdapter? = null
-    private var mFloatingActionButton: FloatingActionButton? = null
+    private var speedDial: SpeedDialView? = null
 
     var items: List<Questionnaires> = emptyList()
 
@@ -34,11 +49,35 @@ class QuestionnairesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_recyclerview)
         setTitle("QUESTIONNAIRES")
 
-        mFloatingActionButton = findViewById(R.id.fab)
-        mFloatingActionButton?.show()
+        speedDial = findViewById(R.id.speedDial)
+        speedDial?.visibility = VISIBLE
 
-        mFloatingActionButton?.setOnClickListener { view ->
-            //TODO: need to add action buttons
+        speedDial?.addAllActionItems(
+            listOf(
+                SpeedDialActionItem.Builder(R.id.email, R.mipmap.envelope_blue).setLabel("Email").create(),
+                SpeedDialActionItem.Builder(R.id.refresh, R.mipmap.refresh).setLabel("Refresh").create(),
+                SpeedDialActionItem.Builder(R.id.text, R.mipmap.ic_launcher).setLabel("Text").create())
+        )
+
+        speedDial?.setOnActionSelectedListener {item ->
+            when(item.id) {
+                R.id.email -> {
+                    Thread {
+                        val customerId = EUUser.shared(this).customerId
+                        val joined = DataBaseHelper.getDatabase(this).fetchAnsweredQuestionnaires(customerId)
+                        didTapEmail(joined)
+                    }.start()
+                }
+
+                R.id.refresh -> {
+                    println("two")
+                }
+
+                R.id.text -> {
+                    println("text")
+                }
+            }
+            return@setOnActionSelectedListener false
         }
 
         recyclerView = findViewById(R.id.recycleView)
@@ -83,8 +122,22 @@ class QuestionnairesActivity : AppCompatActivity() {
         }
     }
 
-    fun didAnsweredQuestionnairesInEmail() {
-        //TODO: create string and send email
+    fun didTapEmail(text: String) {
+        runOnUiThread {
+            if (externalStoragePermissionEnabled) {
+                val intent = Intent(Intent.ACTION_SENDTO)
+                val recipient = "mailto:" + Constants.EMAIL_RECIPIENT
+                intent.data = Uri.parse(recipient)
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Questionnaires")
+                intent.putExtra(Intent.EXTRA_TEXT, "Questions and Answers")
+//                val bytes = text.toByteArray(Charsets.UTF_8)
+//                intent.putExtra(Intent.EXTRA_STREAM, bytes)
+
+                if (intent.resolveActivity(this.packageManager) != null) {
+                    startActivity(intent)
+                }
+            }
+        }
     }
 
     private class QuestionnaireAdapter(private val list: List<Questionnaires>): RecyclerView.Adapter<QuestionnaireAdapter.ViewHolder>() {

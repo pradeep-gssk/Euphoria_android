@@ -95,6 +95,14 @@ class HistoryPhotoActivity: AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        if (resultCode == 0) {
+            return
+        }
+
+        if (data == null) {
+            //TODO: Show error
+        }
+
         when(requestCode) {
             GALLERY -> {
                 val contentURI = data?.data
@@ -105,6 +113,7 @@ class HistoryPhotoActivity: AppCompatActivity() {
                 catch (e: IOException) {
                     e.printStackTrace()
                     Toast.makeText(this, "Failed to get image!", Toast.LENGTH_SHORT).show()
+                    //TODO: Show error
                 }
             }
             CAMERA -> {

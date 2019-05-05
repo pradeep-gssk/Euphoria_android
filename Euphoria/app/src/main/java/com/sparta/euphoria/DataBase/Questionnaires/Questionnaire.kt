@@ -32,7 +32,7 @@ interface QuestionnaireDao {
     fun insert(entity: Questionnaire): Long
 
     @Query("SELECT * FROM QUESTIONNAIRE WHERE ((((OPTION_TYPE = 0) OR (OPTION_TYPE = 1)) AND (ANSWER is null)) OR ((OPTION_TYPE = 2) AND (ANSWER is null) AND (DETAILS is null))) AND (QUESTIONNAIRES_ID = :questionnairesId)")
-    fun getAnsweredQuestionnaireList(questionnairesId: Long): List<Questionnaire>
+    fun getUnAnsweredQuestionnaireList(questionnairesId: Long): List<Questionnaire>
 
     @Query("SELECT * FROM QUESTIONNAIRE WHERE QUESTIONNAIRES_ID = :questionnairesId")
     fun getQuestionnaireList(questionnairesId: Long): List<Questionnaire>
@@ -45,4 +45,8 @@ interface QuestionnaireDao {
 
     @Query("UPDATE QUESTIONNAIRE SET DETAILS = :detail WHERE UID = :uid")
     fun updateDetail(detail: String?, uid: Long)
+
+    @Query("SELECT * FROM QUESTIONNAIRE WHERE ((((OPTION_TYPE = 0) OR (OPTION_TYPE = 1)) AND (ANSWER is not null)) OR ((OPTION_TYPE = 2) AND (ANSWER is not null) AND (DETAILS is not null))) AND (QUESTIONNAIRES_ID = :questionnairesId)")
+    fun getAnsweredQuestionnaireList(questionnairesId: Long): List<Questionnaire>
+
 }
