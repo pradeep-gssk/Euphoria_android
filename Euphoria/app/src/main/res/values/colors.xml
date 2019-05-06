@@ -18,4 +18,5 @@
     <color name="timer">#92382f</color>
     <color name="border">#c5c4c0</color>
     <color name="settings">#9b2e1f</color>
+    <color name="rounded_corner">#8c382f</color>
 </resources>

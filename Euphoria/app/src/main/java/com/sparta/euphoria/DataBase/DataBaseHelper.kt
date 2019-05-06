@@ -59,12 +59,15 @@ abstract class DataBaseHelper: RoomDatabase() {
         }
     }
 
-    fun preloadData(application: Application, customerId: Int) {
+    fun preloadQuestionnaires(application: Application, customerId: Int) {
         addQuestionnaires("Questionnaire1.json".getJson(application), 1, customerId)
         addQuestionnaires("Questionnaire2.json".getJson(application), 2, customerId)
         addQuestionnaires("Questionnaire3.json".getJson(application), 3, customerId)
         addQuestionnaires("Questionnaire4.json".getJson(application), 4, customerId)
         addQuestionnaires("Questionnaire5.json".getJson(application), 5, customerId)
+    }
+
+    fun preloadData(application: Application) {
         addDiet("Diet.json".getJsonArray(application))
         addExercises("Exercises.json".getJsonArray(application))
         addSounds("Sounds.json".getJsonArray(application))

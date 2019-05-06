@@ -1,8 +1,9 @@
 package com.sparta.euphoria.Generic
 
 val PREFS_FILENAME = "com.euphoria.sparta.prefs"
-val PRELOAD_DATA = "PRELOAD_DATA"
-val USER_DATA = "USER_DATA"
+val PRELOAD_DATA = "preload_data"
+val USER_DATA = "user_data"
+val I_AGREE = "i_agree"
 
 class Constants {
     companion object {

@@ -6,7 +6,7 @@
     <string name="passwordHint">PASSWORD</string>
     <string name="forgotPassword">Forgot Password</string>
     <string name="signIn">Sign In</string>
-    <string name="terms">By logging in, you confirm you have read and agree to our Privacy Policy.</string>
+    <string name="terms">By logging in, you confirm you have read and agree to our <b>Privacy Policy</b>.</string>
     <string name="character">character</string>
     <string name="accessory">accessory</string>
     <string name="logo_circle">logoCircle</string>
@@ -49,4 +49,6 @@
     <string name="signout">Signout</string>
     <string name="account">my Account</string>
     <string name="profile">Profile</string>
+    <string name="i_agree">I AGREE</string>
+    <string name="confirm">CONFIRM</string>
 </resources>

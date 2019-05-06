@@ -8,12 +8,15 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.EditText
 import com.sparta.euphoria.DataBase.DataBaseHelper
+import com.sparta.euphoria.Enums.HTMLType
+import com.sparta.euphoria.Generic.I_AGREE
 import com.sparta.euphoria.Generic.PREFS_FILENAME
 import com.sparta.euphoria.Generic.PRELOAD_DATA
 import com.sparta.euphoria.Generic.USER_DATA
 import com.sparta.euphoria.Model.EUUser
 import com.sparta.euphoria.Networking.ApiClient
 import com.sparta.euphoria.R
+import java.io.Serializable
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,6 +33,12 @@ class MainActivity : AppCompatActivity() {
 
         mEmailEditText = findViewById(R.id.emailText)
         mPasswordEditText = findViewById(R.id.passwordText)
+
+        val iAgree = prefs.getBoolean(I_AGREE, false)
+        if (!iAgree) {
+            gotoConcentActivity(HTMLType.concent)
+            return
+        }
 
         val json = prefs.getString(USER_DATA, null)
 
@@ -67,12 +76,15 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    fun didTapPrivacy(view: View) {
+        gotoConcentActivity(HTMLType.privacy)
+    }
+
     fun saveUserAndloadData() {
         val customerId = EUUser.shared(this).customerId
         Thread() {
             val result = DataBaseHelper.getDatabase(this).checkIfUserExist(customerId)
             if (result == true) return@Thread
-            println("CAME HERE")
             DataBaseHelper.getDatabase(this).saveUser(customerId)
             preloadData(customerId)
         }.start()
@@ -83,11 +95,24 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun gotoConcentActivity(htmlType: HTMLType) {
+        val bundle = Bundle()
+        bundle.putSerializable("htmlType", htmlType as Serializable)
+        val intent = Intent(this, ConcentActivity:: class.java)
+        intent.putExtra("bundle", bundle)
+        startActivity(intent)
+    }
+
     fun preloadData(customerId: Int) {
         val db = DataBaseHelper.getDatabase(applicationContext)
-        db.preloadData(application, customerId)
-        val prefsEditor = prefs.edit()
-        prefsEditor.putBoolean(PRELOAD_DATA, true)
-        prefsEditor.apply()
+        db.preloadQuestionnaires(application, customerId)
+
+        val dataLoaded = prefs.getBoolean(PRELOAD_DATA, false)
+        if (!dataLoaded) {
+            db.preloadData(application)
+            val prefsEditor = prefs.edit()
+            prefsEditor.putBoolean(PRELOAD_DATA, true)
+            prefsEditor.apply()
+        }
     }
 }
