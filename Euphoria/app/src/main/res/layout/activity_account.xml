@@ -95,6 +95,7 @@
                 android:layout_height="155dp"
                 android:background="@android:color/transparent"
                 android:src="@mipmap/placeholder"
+                android:scaleType="centerCrop"
                 android:onClick="didTapProfileButton"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -1,5 +1,6 @@
 package com.sparta.euphoria.Activities
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -48,15 +49,20 @@ class MainActivity : AppCompatActivity() {
         if (email.length <= 0) return
         if (password.length <= 0) return
 
-        //TODO: Show loading indicator
+        val progress = ProgressDialog(this)
+        progress.setTitle("Signing In")
+        progress.setCancelable(false)
+        progress.show()
 
         ApiClient(this).loginUser(email, password, success = { json ->
             val prefsEditor = prefs.edit()
             prefsEditor.putString(USER_DATA, json)
             prefsEditor.apply()
             saveUserAndloadData()
+            progress.dismiss()
             gotoHomeActivity()
         }, failure = { message ->
+            progress.dismiss()
             //TODO: Show error
         })
     }
@@ -66,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         Thread() {
             val result = DataBaseHelper.getDatabase(this).checkIfUserExist(customerId)
             if (result == true) return@Thread
+            println("CAME HERE")
             DataBaseHelper.getDatabase(this).saveUser(customerId)
             preloadData(customerId)
         }.start()
@@ -77,13 +84,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun preloadData(customerId: Int) {
-        val dataLoaded = prefs.getBoolean(PRELOAD_DATA, false)
-        if (!dataLoaded) {
-            val db = DataBaseHelper.getDatabase(applicationContext)
-            db.preloadData(application, customerId)
-            val prefsEditor = prefs.edit()
-            prefsEditor.putBoolean(PRELOAD_DATA, true)
-            prefsEditor.apply()
-        }
+        val db = DataBaseHelper.getDatabase(applicationContext)
+        db.preloadData(application, customerId)
+        val prefsEditor = prefs.edit()
+        prefsEditor.putBoolean(PRELOAD_DATA, true)
+        prefsEditor.apply()
     }
 }

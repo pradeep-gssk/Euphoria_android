@@ -2,9 +2,12 @@ package com.sparta.euphoria.Activities.Diet
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
 import com.sparta.euphoria.DataBase.Diet
 import com.sparta.euphoria.Enums.DietType
+import com.sparta.euphoria.Extensions.gotoHome
 import com.sparta.euphoria.R
 
 class DietDetailsActivity: AppCompatActivity() {
@@ -49,5 +52,19 @@ class DietDetailsActivity: AppCompatActivity() {
             mNatureTextView?.text = diet.nature
             mElementTextView?.text = diet.element
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.home_button -> {
+                gotoHome()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

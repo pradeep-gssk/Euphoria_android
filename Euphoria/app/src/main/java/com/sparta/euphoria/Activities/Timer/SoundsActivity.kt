@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
@@ -14,6 +16,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.sparta.euphoria.DataBase.DataBaseHelper
 import com.sparta.euphoria.DataBase.Timer.Sound
+import com.sparta.euphoria.Extensions.gotoHome
 import com.sparta.euphoria.Generic.BaseViewHolder
 import com.sparta.euphoria.Generic.Constants.Companion.RESULT_SOUND
 import com.sparta.euphoria.Generic.OnItemClickListener
@@ -52,6 +55,20 @@ class SoundsActivity: AppCompatActivity() {
             sounds = array
             loadAdapter()
         }.start()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.home_button -> {
+                gotoHome()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun loadAdapter() {

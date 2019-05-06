@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
@@ -20,6 +22,7 @@ import com.sparta.euphoria.Enums.OptionType
 import com.sparta.euphoria.Enums.SelectionType
 import com.sparta.euphoria.Extensions.boolValue
 import com.sparta.euphoria.Extensions.findElement
+import com.sparta.euphoria.Extensions.gotoHome
 import com.sparta.euphoria.Generic.BaseViewHolder
 import com.sparta.euphoria.Generic.OnQuestionnaireItemClickListener
 import com.sparta.euphoria.Model.EUUser
@@ -71,6 +74,20 @@ class QuestionnaireActivity: AppCompatActivity() {
                 loadQuestionnaire()
             }.start()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.home_button -> {
+                gotoHome()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun initializeValues() {

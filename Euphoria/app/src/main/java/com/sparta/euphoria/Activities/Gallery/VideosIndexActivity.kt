@@ -4,14 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.BaseAdapter
 import android.widget.GridView
 import android.widget.TextView
 import com.sparta.euphoria.DataBase.DataBaseHelper
 import com.sparta.euphoria.DataBase.Video
+import com.sparta.euphoria.Extensions.gotoHome
 import com.sparta.euphoria.Generic.OnItemClickListener
 import com.sparta.euphoria.Generic.ViewHolder
 import com.sparta.euphoria.R
@@ -48,6 +47,20 @@ class VideosIndexActivity: AppCompatActivity() {
             val video = videos[position]
             gotoNextActivity(video)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.home_button -> {
+                gotoHome()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun loadViews() {

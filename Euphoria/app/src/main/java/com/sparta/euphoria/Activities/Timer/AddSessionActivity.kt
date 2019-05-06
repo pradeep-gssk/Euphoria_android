@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -18,6 +20,7 @@ import android.widget.TextView
 import com.sparta.euphoria.DataBase.DataBaseHelper
 import com.sparta.euphoria.DataBase.Timer.Sound
 import com.sparta.euphoria.Extensions.duration
+import com.sparta.euphoria.Extensions.gotoHome
 import com.sparta.euphoria.Generic.BaseViewHolder
 import com.sparta.euphoria.Generic.Constants
 import com.sparta.euphoria.Generic.OnStopClickListener
@@ -70,6 +73,20 @@ class AddSessionActivity: AppCompatActivity() {
         Thread() {
             addDefaultStop()
         }.start()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.home_button -> {
+                gotoHome()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

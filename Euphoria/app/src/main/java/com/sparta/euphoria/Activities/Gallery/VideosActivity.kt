@@ -6,12 +6,11 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
 import com.sparta.euphoria.DataBase.DataBaseHelper
+import com.sparta.euphoria.Extensions.gotoHome
 import com.sparta.euphoria.Generic.OnItemClickListener
 import com.sparta.euphoria.R
 import java.io.Serializable
@@ -36,6 +35,20 @@ class VideosActivity: AppCompatActivity() {
             val list = DataBaseHelper.getDatabase(applicationContext).videoDao().getUniqueVideoTitle()
             updateViews(list)
         }.start()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.home_button -> {
+                gotoHome()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun updateViews(list: List<String>) {

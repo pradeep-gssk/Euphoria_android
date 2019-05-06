@@ -7,16 +7,15 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
+import android.view.*
 import android.view.View.VISIBLE
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.leinardi.android.speeddial.SpeedDialActionItem
 import com.leinardi.android.speeddial.SpeedDialView
 import com.sparta.euphoria.DataBase.DataBaseHelper
 import com.sparta.euphoria.DataBase.Questionnaires.Questionnaires
+import com.sparta.euphoria.Extensions.gotoHome
 import com.sparta.euphoria.Generic.Constants
 import com.sparta.euphoria.Generic.OnItemClickListener
 import com.sparta.euphoria.Model.EUUser
@@ -84,6 +83,20 @@ class QuestionnairesActivity : AppCompatActivity() {
             items = DataBaseHelper.getDatabase(applicationContext).questionnairesDao().getQuestionnaires(customerId)
             loadAdapter()
         }.start()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.home_button -> {
+                gotoHome()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun loadAdapter() {

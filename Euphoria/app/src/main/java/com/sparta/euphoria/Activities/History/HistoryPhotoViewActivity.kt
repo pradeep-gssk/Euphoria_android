@@ -9,6 +9,8 @@ import android.os.Environment
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -17,6 +19,7 @@ import android.widget.TextView
 import com.sparta.euphoria.DataBase.DataBaseHelper
 import com.sparta.euphoria.DataBase.History
 import com.sparta.euphoria.Enums.HistoryType
+import com.sparta.euphoria.Extensions.gotoHome
 import com.sparta.euphoria.Generic.Constants
 import com.sparta.euphoria.Generic.Constants.Companion.IMAGE_DIRECTORY
 import com.sparta.euphoria.Model.EUHistory
@@ -60,6 +63,20 @@ class HistoryPhotoViewActivity: AppCompatActivity() {
             mTitleTextView?.text = history?.title
             loadImage(history?.history)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.home_button -> {
+                gotoHome()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onStart() {

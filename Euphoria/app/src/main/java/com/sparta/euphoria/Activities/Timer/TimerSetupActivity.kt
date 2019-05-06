@@ -3,10 +3,13 @@ package com.sparta.euphoria.Activities.Timer
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.NumberPicker
 import android.widget.TextView
+import com.sparta.euphoria.Extensions.gotoHome
 import com.sparta.euphoria.Generic.EUEditText
 import com.sparta.euphoria.Model.EUSession
 import com.sparta.euphoria.R
@@ -68,6 +71,20 @@ class TimerSetupActivity: AppCompatActivity() {
 
             selectedTime = ((selectedMinutes  * 60) + (selectedHours * 3600)).toLong()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.home_button -> {
+                gotoHome()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun didTapOk(view: View) {

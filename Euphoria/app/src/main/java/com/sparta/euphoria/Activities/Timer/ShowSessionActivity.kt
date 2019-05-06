@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
@@ -17,6 +19,7 @@ import com.sparta.euphoria.DataBase.DataBaseHelper
 import com.sparta.euphoria.DataBase.Timer.Session
 import com.sparta.euphoria.DataBase.Timer.Stop
 import com.sparta.euphoria.Extensions.duration
+import com.sparta.euphoria.Extensions.gotoHome
 import com.sparta.euphoria.Generic.BaseViewHolder
 import com.sparta.euphoria.Generic.OnItemClickListener
 import com.sparta.euphoria.R
@@ -49,6 +52,20 @@ class ShowSessionActivity: AppCompatActivity() {
                 setAdapter()
             }.start()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.home_button -> {
+                gotoHome()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun setAdapter() {

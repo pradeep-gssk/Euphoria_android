@@ -1,8 +1,13 @@
 package com.sparta.euphoria.Activities
 
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Environment
+import android.support.v4.content.ContextCompat
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
@@ -14,9 +19,11 @@ import com.sparta.euphoria.DataBase.DataBaseHelper
 import com.sparta.euphoria.Enums.Element
 import com.sparta.euphoria.Enums.HomeType
 import com.sparta.euphoria.Extensions.findElement
+import com.sparta.euphoria.Generic.Constants
 import com.sparta.euphoria.Generic.OnItemClickListener
 import com.sparta.euphoria.Model.EUUser
 import com.sparta.euphoria.R
+import java.io.File
 
 class HomeActivity : AppCompatActivity() {
 
@@ -29,10 +36,17 @@ class HomeActivity : AppCompatActivity() {
         return@lazy HomeType.values()
     }
 
+    val externalStoragePermissionEnabled: Boolean
+        get() {
+            return (ContextCompat.checkSelfPermission(this,
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview)
         setTitle("HOME")
+
         recyclerView = findViewById(R.id.recycleView)
         linearLayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = linearLayoutManager
@@ -48,11 +62,14 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.profile_menu, menu)
+        val item = menu?.getItem(0)
+        if (item != null && item.itemId == R.id.profile_button && externalStoragePermissionEnabled) {
+            loadImage(item)
+        }
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-
         when(item?.itemId) {
             R.id.profile_button -> {
                 val intent = Intent(this, AccountActivity::class.java)
@@ -60,6 +77,10 @@ class HomeActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        moveTaskToBack(true);
     }
 
     private fun loadAdapter() {
@@ -84,7 +105,6 @@ class HomeActivity : AppCompatActivity() {
     private fun getSelectedElement() {
         val customerId = EUUser.shared(this).customerId
         Thread() {
-            val questionnaires = DataBaseHelper.getDatabase(this).questionnairesDao().getQuestionnaire(1, customerId)
             questionnaire1Answered = DataBaseHelper.getDatabase(this).checkIfAllAnswered(1, customerId)
             loadAdapter()
         }.start()
@@ -95,6 +115,35 @@ class HomeActivity : AppCompatActivity() {
         runOnUiThread {
             val intent = Intent(this, item.cls)
             startActivity(intent)
+        }
+    }
+
+
+    private fun getDirectory(): File {
+        val imagesDirectory = File(
+            (Environment.getExternalStorageDirectory()).toString() + Constants.IMAGE_DIRECTORY
+        )
+        if (!imagesDirectory.exists()) {
+            imagesDirectory.mkdirs()
+        }
+        return imagesDirectory
+    }
+
+    fun getDirectoryForFileName(fileName: String): File {
+        return File(getDirectory(), fileName)
+    }
+
+    private fun loadImage(item: MenuItem) {
+        val customerId = EUUser.shared(this).customerId
+        val imagePath = getDirectoryForFileName(customerId.toString()+".jpg")
+        if (imagePath.exists()) {
+            val mBitmap = BitmapFactory.decodeFile(imagePath.toString())
+            val cornerRadius = 20f
+            val roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(resources, mBitmap)
+            roundedBitmapDrawable.cornerRadius = cornerRadius
+            roundedBitmapDrawable.isCircular = true
+            roundedBitmapDrawable.setAntiAlias(true)
+            item.setIcon(roundedBitmapDrawable)
         }
     }
 

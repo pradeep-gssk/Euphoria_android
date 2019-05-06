@@ -4,6 +4,8 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
@@ -14,6 +16,7 @@ import com.sparta.euphoria.DataBase.DataBaseHelper
 import com.sparta.euphoria.DataBase.Timer.Session
 import com.sparta.euphoria.DataBase.Timer.Stop
 import com.sparta.euphoria.Extensions.fullDuration
+import com.sparta.euphoria.Extensions.gotoHome
 import com.sparta.euphoria.Generic.Constants.Companion.PAUSE
 import com.sparta.euphoria.Generic.Constants.Companion.PLAY
 import com.sparta.euphoria.R
@@ -63,6 +66,20 @@ class TimerCountDownActivity: AppCompatActivity() {
                 setTimerInitialValues()
             }.start()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.home_button -> {
+                gotoHome()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onBackPressed() {

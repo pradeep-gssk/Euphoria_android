@@ -3,11 +3,14 @@ package com.sparta.euphoria.Activities.Exercises
 import android.os.Bundle
 import android.support.constraint.ConstraintLayout
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.MediaController
 import android.widget.TextView
 import android.widget.VideoView
 import com.sparta.euphoria.DataBase.Exercises
 import com.sparta.euphoria.Enums.ExerciseType
+import com.sparta.euphoria.Extensions.gotoHome
 import com.sparta.euphoria.R
 
 class ExerciseViewActivity: AppCompatActivity() {
@@ -33,6 +36,20 @@ class ExerciseViewActivity: AppCompatActivity() {
             val exercise = bundle.get("exercise") as Exercises
             loadViews(exercise)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.home_button -> {
+                gotoHome()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun loadViews(exercise: Exercises) {
