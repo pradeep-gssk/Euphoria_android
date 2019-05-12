@@ -51,4 +51,16 @@
     <string name="profile">Profile</string>
     <string name="i_agree">I AGREE</string>
     <string name="confirm">CONFIRM</string>
+    <string name="treatment_description">Treatment Description</string>
+    <string name="therapist">Therapist</string>
+    <string name="price">Price</string>
+    <string name="discount_percentage">Discount %</string>
+    <string name="discount">Discount</string>
+    <string name="date">Date</string>
+    <string name="duration">Duration</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_time">End Time</string>
+    <string name="room">Room</string>
+    <string name="room_number">Room #</string>
+    <string name="product_description">Product Description</string>
 </resources>

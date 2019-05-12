@@ -15,11 +15,13 @@ sealed class ApiRoute {
         }
 
     data class Login(var email: String, var password: String, var ctx: Context) : ApiRoute()
+    data class Activities(var customerId: Int, var ctx: Context) : ApiRoute()
 
     val httpMethod: Int
         get() {
             return when (this) {
                 is Login -> Request.Method.GET
+                is Activities -> Request.Method.GET
             }
         }
 
@@ -27,6 +29,7 @@ sealed class ApiRoute {
         get() {
             return when (this) {
                 is Login -> hashMapOf()
+                is Activities -> hashMapOf()
             }
         }
 
@@ -42,6 +45,7 @@ sealed class ApiRoute {
         get() {
             return "$baseUrl/${when (this@ApiRoute) {
                 is Login -> "customers/" + this.email + "/" + this.password
+                is Activities -> "appointment/custommerappointments/" + this.customerId
             }}"
         }
 }

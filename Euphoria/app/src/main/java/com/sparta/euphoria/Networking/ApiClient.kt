@@ -6,28 +6,18 @@ import com.android.volley.toolbox.BasicNetwork
 import com.android.volley.toolbox.DiskBasedCache
 import com.android.volley.toolbox.HurlStack
 import com.android.volley.toolbox.StringRequest
+import com.sparta.euphoria.Generic.toObject
+import com.sparta.euphoria.Model.EUActivity
 import com.sparta.euphoria.Model.EUUser
+import org.json.JSONArray
+import org.json.JSONObject
 
 class ApiClient(private val ctx: Context) {
-
-//    fun loginUser(email: String, password: String, completion: (user: EUUser?, message: String) -> Unit) {
-//        val route = ApiRoute.Login(email, password, ctx)
-//        this.performRequest(route) { success, response ->
-//            if (success) {
-////                val user: EUUser = response.json.toObject()
-//                EUUser.saveUser(response.json)
-//                completion.invoke(EUUser.shared(ctx), "")
-//            } else {
-//                completion.invoke(null, response.message)
-//            }
-//        }
-//    }
 
     fun loginUser(email: String, password: String, success: (json: String) -> Unit, failure: (message: String) -> Unit) {
         val route = ApiRoute.Login(email, password, ctx)
         this.performRequest(route) { success, response ->
             if (success) {
-//                val user: EUUser = response.json.toObject()
                 EUUser.saveUser(response.json)
                 success(response.json)
             } else {
@@ -36,6 +26,24 @@ class ApiClient(private val ctx: Context) {
         }
     }
 
+    fun requestActivities(customerId: Int, success: (activities: ArrayList<EUActivity>) -> Unit, failure: (message: String) -> Unit) {
+        val route = ApiRoute.Activities(customerId, ctx)
+        this.performRequest(route) { success, response ->
+            if (success) {
+                val array = ArrayList<EUActivity>()
+                val jsonArray: JSONArray = response.jsonArray
+                for (i in 0..(jsonArray.length()-1)) {
+                    if (jsonArray[i] is JSONObject) {
+                        val obj = jsonArray[i].toString().toObject<EUActivity>()
+                        array.add(obj)
+                    }
+                }
+                success(array)
+            } else {
+                failure(response.message)
+            }
+        }
+    }
 
     /***
      * PERFORM REQUEST

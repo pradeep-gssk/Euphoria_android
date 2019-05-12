@@ -67,7 +67,6 @@ class EUProgrammes: AppCompatActivity() {
 
             programmesAdapter?.setOnItemClickListener(object : OnItemClickListener {
                 override fun onItemClick(view: View?, position: Int) {
-                    //gotoNextActivity(list[position])
                     val openURL = Intent(Intent.ACTION_VIEW)
                     openURL.data = Uri.parse(PROGRAM_PATH)
                     startActivity(openURL)

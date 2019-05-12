@@ -39,3 +39,9 @@ fun Date.monthYearString() : String {
     val formatter = SimpleDateFormat("MMM, yyyy")
     return formatter.format(this)
 }
+
+@SuppressLint("SimpleDateFormat")
+fun Long.dateMonthYearString() : String {
+    val formatter = SimpleDateFormat("dd/MM/yyyy")
+    return formatter.format(this)
+}

@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+            android:id="@+id/headerView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/header_border"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+                android:id="@+id/logoImage"
+                android:contentDescription="@string/logo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="18dp"
+                android:src="@mipmap/logo_circle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/titleColor"
+                android:gravity="start|center"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/logoImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/headerView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+                android:id="@+id/treatmentDescriptionTitle"
+                android:text="@string/treatment_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/defaultTextColor"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+                android:id="@+id/treatmentDescription"
+                android:text="@string/treatment_description"
+                android:layout_marginTop="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/defaultTextColor"
+                app:layout_constraintTop_toBottomOf="@+id/treatmentDescriptionTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+                android:id="@+id/therapistTitle"
+                android:text="@string/therapist"
+                android:layout_marginTop="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/defaultTextColor"
+                app:layout_constraintTop_toBottomOf="@+id/treatmentDescription"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+                android:id="@+id/therapist"
+                android:text="@string/therapist"
+                android:layout_marginTop="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/defaultTextColor"
+                app:layout_constraintTop_toBottomOf="@+id/therapistTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        <LinearLayout
+                android:id="@+id/priceLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/therapist"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="18sp"
+                    android:singleLine="false"
+                    android:textStyle="bold"
+                    android:text="@string/price"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+            <TextView
+                    android:id="@+id/priceTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="16sp"
+                    android:singleLine="false"
+                    android:text="@string/price"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/discountPercentLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/priceLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="18sp"
+                    android:singleLine="false"
+                    android:textStyle="bold"
+                    android:text="@string/discount_percentage"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+            <TextView
+                    android:id="@+id/discountPercentTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="16sp"
+                    android:singleLine="false"
+                    android:text="@string/discount_percentage"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/discountLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/discountPercentLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="18sp"
+                    android:singleLine="false"
+                    android:textStyle="bold"
+                    android:text="@string/discount"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+            <TextView
+                    android:id="@+id/discountTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="16sp"
+                    android:singleLine="false"
+                    android:text="@string/discount"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/dateLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/discountLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="18sp"
+                    android:singleLine="false"
+                    android:textStyle="bold"
+                    android:text="@string/date"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+            <TextView
+                    android:id="@+id/dateTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="16sp"
+                    android:singleLine="false"
+                    android:text="@string/date"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/durationLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/dateLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="18sp"
+                    android:singleLine="false"
+                    android:textStyle="bold"
+                    android:text="@string/duration"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+            <TextView
+                    android:id="@+id/durationTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="16sp"
+                    android:singleLine="false"
+                    android:text="@string/duration"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/startTimeLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/durationLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="18sp"
+                    android:singleLine="false"
+                    android:textStyle="bold"
+                    android:text="@string/start_time"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+            <TextView
+                    android:id="@+id/startTimeTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="16sp"
+                    android:singleLine="false"
+                    android:text="@string/start_time"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/endTimeLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/startTimeLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="18sp"
+                    android:singleLine="false"
+                    android:textStyle="bold"
+                    android:text="@string/end_time"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+            <TextView
+                    android:id="@+id/endTimeTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="16sp"
+                    android:singleLine="false"
+                    android:text="@string/end_time"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/roomLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/endTimeLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="18sp"
+                    android:singleLine="false"
+                    android:textStyle="bold"
+                    android:text="@string/room"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+            <TextView
+                    android:id="@+id/roomTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="16sp"
+                    android:singleLine="false"
+                    android:text="@string/room"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/roomNumberLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/roomLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="18sp"
+                    android:singleLine="false"
+                    android:textStyle="bold"
+                    android:text="@string/room_number"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+            <TextView
+                    android:id="@+id/roomNumberTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".50"
+                    android:textSize="16sp"
+                    android:singleLine="false"
+                    android:text="@string/room_number"
+                    android:textColor="@color/defaultTextColor"
+                    android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <TextView
+                android:id="@+id/productDescriptionTitle"
+                android:text="@string/product_description"
+                android:layout_marginTop="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/defaultTextColor"
+                app:layout_constraintTop_toBottomOf="@+id/roomNumberLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+                android:id="@+id/productDescription"
+                android:text="@string/product_description"
+                android:layout_marginTop="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/defaultTextColor"
+                app:layout_constraintTop_toBottomOf="@+id/productDescriptionTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

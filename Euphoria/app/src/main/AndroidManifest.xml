@@ -60,6 +60,8 @@
         </activity>
         <activity android:name=".Activities.Activities.EUCalendarActivity">
         </activity>
+        <activity android:name=".Activities.Activities.EUActivityDetails">
+        </activity>
         <activity android:name=".Activities.Activities.EUProgrammes">
         </activity>
         <activity android:name=".Activities.History.HistoryActivity">
